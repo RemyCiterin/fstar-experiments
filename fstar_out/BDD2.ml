@@ -65,3 +65,7 @@ type 'table is_correct_table = unit
 type valid_table = global_table
 type ('table, 'bdd1) contains_prop = unit
 type ('table, 'node1) is_compatible_node = Obj.t
+
+
+let (inv : sign -> sign) =
+  fun sign1 -> match sign1 with | INVERSE -> IDENTITY | IDENTITY -> INVERSE
