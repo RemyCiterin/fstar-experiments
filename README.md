@@ -1,4 +1,4 @@
-# F-experiments
+# fstar-experiments
 multiples expérimentations autours du langage F*
 
 ## todo : 
