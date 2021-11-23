@@ -72,11 +72,12 @@ let is_valid (table:global_table) : prop =
         (* pour la génération de futur bdd *)
         bdd.tag < table.size /\ 
 
-        (* unicité des bdd dans la table à leurs noeuds près *)
+        (* unicité des bdd dans la table à leurs tag près *)
         (forall hash'. 
             M.contains table.map hash' ==> (
             let bdd' = M.sel table.map hash' in 
-            bdd'.tag = bdd.tag ==> bdd' == bdd
+            (bdd'.tag = bdd.tag ==> bdd' == bdd) /\ 
+            (bdd'.node == bdd.node ==> bdd' == bdd)
         )) /\
 
         (* les fils d'un noeud doivent être dans la table *)
