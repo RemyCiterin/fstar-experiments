@@ -61,7 +61,7 @@ type global_table = {
     size: nat
 }
 
-let is_valid (table:global_table) : prop = 
+let is_correct_table (table:global_table) : prop = 
     forall hash. M.contains table.map hash ==> (
         let bdd = M.sel table.map hash in 
 
@@ -90,3 +90,14 @@ let is_valid (table:global_table) : prop =
         | Leaf s -> true 
         end 
     )
+
+type valid_table = table:global_table{is_correct_table table}
+
+let contains_prop (table:valid_table) (bdd:bdd) : prop = 
+    M.contains table.map (node_hash bdd.node) /\ (M.sel table.map (node_hash bdd.node)) == bdd
+
+let is_compatible_node (table:valid_table) (node:node) : prop = 
+    match node with 
+    | Leaf s -> true 
+    | Node s l v h -> 
+        contains_prop table l /\ contains_prop table h

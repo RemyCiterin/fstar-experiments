@@ -1,5 +1,5 @@
 [
-  "ˆu‹*hú‰Z.í\u0000ä,eƒL",
+  "h°Rs|ê”ú*’LåeI\u0018\r",
   [
     [
       "BDD2.bdd'",
@@ -230,7 +230,7 @@
       "620805c56fa8c6acf649ca3d7d84648c"
     ],
     [
-      "BDD2.is_valid",
+      "BDD2.is_correct_table",
       1,
       2,
       1,
@@ -264,7 +264,59 @@
         "typing_BDD2.__proj__Mkbdd___item__node"
       ],
       0,
-      "a32e282e642e6f18d4ea066f51ab260a"
+      "ecd9766d3deb8411628e41d45508f7fb"
+    ],
+    [
+      "BDD2.contains_prop",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple5__uu___haseq",
+        "equation_BDD2.bdd", "equation_BDD2.hash_type", "equation_Prims.eq2",
+        "equation_Prims.eqtype", "equation_Prims.l_and",
+        "equation_Prims.nat", "equation_Prims.squash",
+        "equation_Prims.subtype_of", "fuel_guarded_inversion_BDD2.bdd_",
+        "function_token_typing_Prims.bool",
+        "function_token_typing_Prims.int",
+        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "l_quant_interp_5b2993f9f2c0eba3627049a3b4167c7a",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_7debc8526c1742a453863eb8081f1d54",
+        "refinement_kinding_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
+      ],
+      0,
+      "55bd2f0ac8f8beae38d229d047a8aea0"
+    ],
+    [
+      "BDD2.is_compatible_node",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_BDD2.is_obdd.fuel_instrumented",
+        "@fuel_irrelevance_BDD2.is_obdd.fuel_instrumented", "@query",
+        "constructor_distinct_BDD2.Leaf", "constructor_distinct_BDD2.Node",
+        "disc_equation_BDD2.Leaf", "disc_equation_BDD2.Node",
+        "equation_BDD2.node", "equation_Prims.l_and", "equation_Prims.prop",
+        "equation_Prims.squash", "equation_Prims.subtype_of",
+        "equation_with_fuel_BDD2.is_obdd.fuel_instrumented",
+        "fuel_guarded_inversion_BDD2.node_", "l_and-interp",
+        "l_quant_interp_5b2993f9f2c0eba3627049a3b4167c7a",
+        "projection_inverse_BDD2.Leaf__0", "projection_inverse_BDD2.Node__0",
+        "projection_inverse_BDD2.Node__1", "projection_inverse_BDD2.Node__2",
+        "projection_inverse_BDD2.Node__3",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "refinement_interpretation_Tm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "refinement_interpretation_Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf",
+        "token_correspondence_BDD2.is_obdd.fuel_instrumented"
+      ],
+      0,
+      "78367118019a6132e4b9c12c4aeb705f"
     ]
   ]
 ]
