@@ -101,3 +101,38 @@ let is_compatible_node (table:valid_table) (node:node) : prop =
     | Leaf s -> true 
     | Node s l v h -> 
         contains_prop table l /\ contains_prop table h
+
+let rec contains_lemma1 (table:valid_table) (node:node) : 
+    Lemma 
+        (requires M.contains table.map (node_hash node))
+
+        (ensures (contains_prop table (M.sel table.map (node_hash node))))
+
+        (decreases (match node with | Node s l v r -> v+1 | Leaf s -> 0))
+    = 
+
+    let bdd = M.sel table.map (node_hash node) in 
+    match bdd.node with 
+    | Leaf s -> ()
+    | Node s l v h -> 
+        assert (Leaf? l.node || get_var l < v);
+        assert (Leaf? l.node || get_var l < v);
+        contains_lemma1 table l.node;
+        contains_lemma1 table h.node
+
+let contains_lemma2 (table:valid_table) (hash:hash_type) : 
+    Lemma 
+        (requires M.contains table.map hash)
+
+        (ensures (contains_prop table (M.sel table.map hash)))
+
+    = let bdd = M.sel table.map hash in 
+    
+    assert (node_hash bdd.node == hash);
+    assert (M.contains table.map (node_hash bdd.node));
+    assert (M.sel table.map (node_hash bdd.node) == bdd);
+    contains_lemma1 table bdd.node
+
+let inv (sign:sign) = match sign with 
+    | INVERSE -> IDENTITY
+    | IDENTITY -> INVERSE
