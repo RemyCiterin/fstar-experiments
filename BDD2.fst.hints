@@ -1,5 +1,5 @@
 [
-  "§m¯\\ìàÆƒNê?t\tT\u0014_",
+  "˚ˆi∑\u0010¯Fπo\u001fﬂÖ“\u001f\u0000u",
   [
     [
       "BDD2.bdd'",
@@ -126,29 +126,6 @@
       "44bb17cc4cb9f318d5a224c88f92a346"
     ],
     [
-      "BDD2.find_tag",
-      1,
-      2,
-      1,
-      [
-        "@MaxIFuel_assumption", "@query",
-        "BDD2_pretyping_6ed7bf391a8d01ba583ddb178562882a",
-        "binder_x_6ed7bf391a8d01ba583ddb178562882a_0",
-        "disc_equation_BDD2.Node", "equation_BDD2.get_high",
-        "equation_BDD2.get_low", "equation_Prims.eqtype",
-        "equation_Prims.nat", "fuel_guarded_inversion_BDD2.bdd_",
-        "function_token_typing_Prims.int",
-        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "proj_equation_BDD2.Mkbdd__node",
-        "projection_inverse_BoxBool_proj_0",
-        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
-        "subterm_ordering_BDD2.Mkbdd_", "subterm_ordering_BDD2.Node",
-        "typing_BDD2.__proj__Mkbdd___item__node"
-      ],
-      0,
-      "6239192dec560b377c6decf93b1e86ef"
-    ],
-    [
       "BDD2.is_obdd",
       1,
       2,
@@ -171,7 +148,7 @@
         "typing_BDD2.__proj__Mkbdd___item__node", "typing_tok_Prims.T@tok"
       ],
       0,
-      "b08fbb5e8bfb78484b30d1d3b4da77bd"
+      "a3c4bc548ecc21ed3cc2d113b92eb4ef"
     ],
     [
       "BDD2.node_hash",
@@ -196,7 +173,7 @@
         "typing_BDD2.__proj__Node__item___0"
       ],
       0,
-      "a6334dbca18245d8caee3f6bc75807c7"
+      "3c7b98fe6f8d26c41c5b9f579d81f8ae"
     ],
     [
       "BDD2.global_table",
@@ -214,7 +191,7 @@
         "refinement_kinding_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
       ],
       0,
-      "e627d629b88fed217616044aaa7d747c"
+      "768bcd6940059a40d6704dfad72c4bd0"
     ],
     [
       "BDD2.__proj__Mkglobal_table__item__map",
@@ -232,7 +209,7 @@
         "refinement_kinding_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
       ],
       0,
-      "d5af7ed312c8f9933b163c52acb723d3"
+      "c499ccc118138996e66595f30238a759"
     ],
     [
       "BDD2.__proj__Mkglobal_table__item__map",
@@ -250,7 +227,44 @@
         "refinement_kinding_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
       ],
       0,
-      "5d7e5389da59d52b90d49e03c260dade"
+      "620805c56fa8c6acf649ca3d7d84648c"
+    ],
+    [
+      "BDD2.is_valid",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_BDD2.is_obdd.fuel_instrumented",
+        "@fuel_irrelevance_BDD2.is_obdd.fuel_instrumented", "@query",
+        "assumption_FStar.Pervasives.Native.tuple5__uu___haseq",
+        "constructor_distinct_BDD2.Node", "data_elim_BDD2.Mkbdd_",
+        "disc_equation_BDD2.Leaf", "disc_equation_BDD2.Node",
+        "equation_BDD2.bdd", "equation_BDD2.hash_type",
+        "equation_Prims.eqtype", "equation_Prims.l_Forall",
+        "equation_Prims.nat", "equation_Prims.squash",
+        "equation_Prims.subtype_of",
+        "equation_with_fuel_BDD2.is_obdd.fuel_instrumented",
+        "fuel_guarded_inversion_BDD2.bdd_",
+        "fuel_guarded_inversion_BDD2.node_",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple5",
+        "function_token_typing_Prims.bool",
+        "function_token_typing_Prims.int",
+        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2", "l_and-interp",
+        "l_quant_interp_5b2993f9f2c0eba3627049a3b4167c7a",
+        "proj_equation_BDD2.Mkbdd__node", "projection_inverse_BDD2.Node__0",
+        "projection_inverse_BDD2.Node__1", "projection_inverse_BDD2.Node__2",
+        "projection_inverse_BDD2.Node__3",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_7debc8526c1742a453863eb8081f1d54",
+        "refinement_kinding_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "typing_BDD2.__proj__Mkbdd___item__node"
+      ],
+      0,
+      "a4a75f64cdcdb760272558897314cb37"
     ]
   ]
 ]

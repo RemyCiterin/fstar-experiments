@@ -55,9 +55,37 @@ private let node_hash (node:node) : hash_type =
     | Leaf INVERSE  -> false, true,  0, 0, 0
     | Leaf IDENTITY -> false, false, 0, 0, 0
 
-
 noeq
 type global_table = {
     map: M.t hash_type bdd;
     size: nat
 }
+
+let is_valid (table:global_table) : prop = 
+    forall hash. M.contains table.map hash ==> (
+        let bdd = M.sel table.map hash in 
+
+        (* on veut pouvoir en conclure une relation du type
+            bdd == (M.sel table.map (node_hash bdd.node))  *)
+        node_hash bdd.node == hash /\ 
+
+        (* pour la génération de futur bdd *)
+        bdd.tag < table.size /\ 
+
+        (* unicité des bdd dans la table à leurs noeuds près *)
+        (forall hash'. 
+            M.contains table.map hash' ==> (
+            let bdd' = M.sel table.map hash' in 
+            bdd'.tag = bdd.tag ==> bdd' == bdd
+        )) /\
+
+        (* les fils d'un noeud doivent être dans la table *)
+        begin match bdd.node with 
+        | Node s l v h -> 
+            M.contains table.map (node_hash l.node) /\ 
+            M.contains table.map (node_hash h.node) /\ 
+            M.sel table.map (node_hash l.node) == l /\
+            M.sel table.map (node_hash h.node) == h
+        | Leaf s -> true 
+        end 
+    )

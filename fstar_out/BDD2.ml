@@ -39,12 +39,6 @@ let (get_var : bdd' -> Prims.nat) =
   fun bdd -> match bdd.node with | Node (s, l, v, h) -> v
 let (get_sign : bdd' -> sign) =
   fun bdd -> match bdd.node with | Node (s, l, v, h) -> s | Leaf s -> s
-let rec (find_tag : bdd' -> Prims.nat -> Prims.bool) =
-  fun bdd ->
-    fun tag ->
-      (((uu___is_Node bdd.node) && (find_tag (get_low bdd) tag)) ||
-         ((uu___is_Node bdd.node) && (find_tag (get_high bdd) tag)))
-        || (tag = bdd.tag)
 type 'node is_obdd = Obj.t
 type bdd = bdd'
 type node = node'
@@ -67,3 +61,4 @@ let (__proj__Mkglobal_table__item__map :
   fun projectee -> match projectee with | { map; size;_} -> map
 let (__proj__Mkglobal_table__item__size : global_table -> Prims.nat) =
   fun projectee -> match projectee with | { map; size;_} -> size
+type 'table is_valid = unit
