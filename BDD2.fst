@@ -33,12 +33,6 @@ let get_sign (bdd: bdd'{Node? bdd.node}) = match bdd.node with
     | Node s l v h -> s
     | Leaf s -> s
 
-(** search is a children of a bdd have the same tag *)
-let rec find_tag (bdd:bdd') (tag:nat) : bool =
-    (Node? bdd.node && find_tag (get_low  bdd) tag) ||
-    (Node? bdd.node && find_tag (get_high bdd) tag) ||
-    tag = bdd.tag
-
 (** one of the conditions that solve all valid bdd *)
 let rec is_obdd (node:node') : prop = 
     match node with
