@@ -45,7 +45,7 @@ let rec (find_tag : bdd' -> Prims.nat -> Prims.bool) =
       (((uu___is_Node bdd.node) && (find_tag (get_low bdd) tag)) ||
          ((uu___is_Node bdd.node) && (find_tag (get_high bdd) tag)))
         || (tag = bdd.tag)
-type 'bdd is_obdd = Obj.t
+type 'node is_obdd = Obj.t
 type bdd = bdd'
 type node = node'
 type hash_type =

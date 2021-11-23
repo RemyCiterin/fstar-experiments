@@ -40,26 +40,17 @@ let rec find_tag (bdd:bdd') (tag:nat) : bool =
     tag = bdd.tag
 
 (** one of the conditions that solve all valid bdd *)
-let rec is_obdd (bdd:bdd') : prop = 
-    match bdd.node with
+let rec is_obdd (node:node') : prop = 
+    match node with
     | Leaf s -> true 
     | Node s l v h -> 
-        (forall t. find_tag h t ==> t < bdd.tag) /\
-        (forall t. find_tag l t ==> t < bdd.tag) /\
         (Leaf? l.node || get_var l < v) /\ 
         (Leaf? h.node || get_var h < v) /\ 
-        is_obdd l /\ is_obdd h
+        is_obdd l.node /\ is_obdd h.node
 
 (** more safety type for bdd *)
-type bdd  = bdd:bdd'  {is_obdd bdd}
-type node = node:node'{
-    match node with 
-    | Leaf s -> true 
-    | Node s l v h -> 
-        (Leaf? l.node || get_var l < v) /\ 
-        (Leaf? h.node || get_var h < v) /\ 
-        is_obdd l /\ is_obdd h
-}
+type bdd  = bdd:bdd'  {is_obdd bdd.node}
+type node = node:node'{is_obdd node}
 
 (** allow to compare bdd without deep comparaison *)
 type hash_type = bool & bool & nat & nat & nat
