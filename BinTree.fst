@@ -97,4 +97,11 @@ let make_lemma #a (#f: comparaison a) (l: set f) k (r: set f) :
     
     ()
 
-
+let rec lemma_EQ #a (#f: comparaison a) (input: set f) : 
+    Lemma 
+        (forall x y. EQ? (f x y) ==>
+            (member x input <==> member y input)
+        )
+    = match input with 
+    | Node l k _ r -> lemma_EQ l; lemma_EQ r
+    | Leaf -> ()

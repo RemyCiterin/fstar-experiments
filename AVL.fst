@@ -1,6 +1,7 @@
 module AVL
 
 open BinTree 
+open FStar.Classical
 
 (* definitions *)
 
@@ -129,7 +130,7 @@ let rec remove #a (#f: comparaison a) (x:a) (input:set f): Tot (out: set f) (dec
 
 (* proof *)
 
-#push-options "--z3rlimit 50"
+#push-options "--z3rlimit 60"
 
 
 let rec find_min_lemma #a (#f: comparaison a) (input: set f{Node? input}) : 
@@ -314,7 +315,76 @@ let rec add_lemma #a (#f: comparaison a) (x:a) (input:set f):
             end else make_lemma l k r' 
         end 
 
+let rec remove_lemma #a (#f: comparaison a) (x:a) (input:set f): 
+    Lemma 
+        (requires is_avl input) 
 
+        (ensures (
+            let out = remove x input in 
+            is_avl out /\ height out <= height input /\ 
+            height out >= height input - 1 /\ 
+
+            (forall y. member y out <==> (
+                member y input /\ ~(EQ? (f x y))
+            ))
+        ))
+        
+        (decreases input)
+
+
+    = match input with 
+    | Leaf -> ()
+    | Node l k _ r -> match f x k with 
+        | LT -> 
+        begin 
+            remove_lemma x l; 
+            let l' = remove x l in
+            if Node? r && delta l' r >= 2 then begin
+                if height (left r) > height (right r) 
+                then balanceRL_lemma l' k r
+                else begin 
+                    if height (left r) = height (right r)
+                    then balanceRR_lemma2 l' k r
+                    else balanceRR_lemma  l' k r   
+                end
+            end else make_lemma l' k r
+        end 
+        | GT -> 
+        begin
+            remove_lemma x r; 
+            let r' = remove x r in 
+            if Node? l && delta l r' >= 2 then begin 
+                if height (left l) < height (right l) 
+                then balanceLR_lemma l k r' 
+                else begin
+                    if height (left l) = height (right l)
+                    then balanceLL_lemma2 l k r'
+                    else balanceLL_lemma  l k r'
+                end
+            end else make_lemma l k r'
+        end 
+        | EQ -> 
+            if Leaf? l then () else 
+            if Leaf? r then () else begin
+            
+            find_min_lemma r; 
+            let k' = find_min r in 
+            let r' = remove k' r in
+            remove_lemma k' r;
+
+            lemma_EQ r; lemma_EQ r';
+            
+            if delta l r' >= 2 then begin 
+                if height (left l) < height (right l) 
+                then balanceLR_lemma l k' r'
+                else begin 
+                    if height (left l) = height (right l) 
+                    then balanceLL_lemma2 l k' r' 
+                    else balanceLL_lemma  l k' r'
+                end 
+            end else make_lemma l k' r' 
+            
+        end
 
 
 #pop-options

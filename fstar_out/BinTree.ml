@@ -86,3 +86,4 @@ let make :
       fun k ->
         fun r ->
           Node (l, k, (Prims.int_one + (max (height f l) (height f r))), r)
+

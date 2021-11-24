@@ -1,5 +1,5 @@
 [
-  "QGrºuK5@\u0017F\u001dŸP7'Õ",
+  "«Q\u0011ñ\u0001£lŸž“yz=[\u0005G",
   [
     [
       "BinTree.set",
@@ -248,6 +248,43 @@
       ],
       0,
       "5bb215da3c7d71cf992c799b58a7abf9"
+    ],
+    [
+      "BinTree.lemma_EQ",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented",
+        "@fuel_irrelevance_BinTree.member.fuel_instrumented", "@query",
+        "BinTree_interpretation_Tm_arrow_8782fff1e8973b2e53454e7950f6b114",
+        "binder_x_6177addfc924cf2d3816e8e847d7d281_3",
+        "binder_x_78c6eab12e4ced929a569bb56f70cf19_2",
+        "binder_x_fe28d8bcde588226b4e538b35321de05_1", "bool_inversion",
+        "bool_typing", "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node", "disc_equation_BinTree.EQ",
+        "disc_equation_BinTree.GT", "disc_equation_BinTree.Leaf",
+        "disc_equation_BinTree.Node", "equation_BinTree.comparaison",
+        "equation_BinTree.reflexivity", "equation_BinTree.symmetry_EQ",
+        "equation_BinTree.transitivity", "equation_BinTree.transitivity_EQ",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "fuel_guarded_inversion_BinTree.set", "primitive_Prims.op_BarBar",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BinTree.Node_left",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_cc5495a04f6ec5535fd03a43b0cbd045",
+        "subterm_ordering_BinTree.Node", "typing_BinTree.member",
+        "typing_BinTree.uu___is_EQ", "typing_BinTree.uu___is_GT"
+      ],
+      0,
+      "b0f6fbbf72c5077da835647990dfc966"
     ]
   ]
 ]
