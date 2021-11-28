@@ -1,7 +1,9 @@
 # fstar-experiments
-multiples expérimentations autours du langage F* pour la génération de preuve (presque) automatique
+several experiments on F * for the generation of (almost) automatic proofs
 
 ## todo : 
-1. arbres AVL (insertions et supréssion d'éléments, l'objectif est d'en faire des modules Set et Map)
-2. Binary Decision Diagram (typé dans mon cas pour minimiser les utilisations de la mémoire)
-3. éventuellement un solver SAT (mais ça risque d'être difficile)
+1. AVL tree
+2. Set and Map module
+3. Binary Decision Diagram (typed in this case for more efficient memoization)
+4. eventualy a SAT solver
+5. a little SMT solver (linear algebra and non-interpreted functions and variables) but... it's realy hard
