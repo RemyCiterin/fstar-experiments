@@ -1,5 +1,5 @@
 module AVL
-
+open Compare
 open BinTree 
 open FStar.Classical
 
@@ -43,6 +43,19 @@ private let balanceRL #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Node? r /
     | Node rl rk _ rr -> match rl with 
         | Node rll rlk _ rlr -> make (make l k rll) rlk (make rlr rk rr)
 
+let all_balanceL #a (#f: comparaison a) (l: set f{Node? l}) (k:a) (r:set f): set f = 
+    if height l >= 2 + height r then begin assert(Node? l);
+        if height (left l) < height (right l) 
+        then balanceLR l k r
+        else balanceLL l k r
+    end else make l k r
+
+let all_balanceR #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Node? r}): set f = 
+    if height r >= height l + 2 then begin assert(Node? r);
+        if height (left r) > height (right r) 
+        then balanceRL l k r
+        else balanceRR l k r
+    end else make l k r
 
 
 let rec add #a (#f: comparaison a) (x:a) (input:set f): 
@@ -58,20 +71,12 @@ let rec add #a (#f: comparaison a) (x:a) (input:set f):
         | LT -> 
         begin 
             let l' = add x l in 
-            if height l' >= 2 + height r then begin assert(Node? l');
-                if height (left l') < height (right l') 
-                then balanceLR l' k r
-                else balanceLL l' k r
-            end else make l' k r 
+            all_balanceL l' k r 
         end 
         | GT -> 
         begin 
             let r' = add x r in 
-            if height r' >= height l + 2 then begin assert(Node? r');
-                if height (left r') > height (right r') 
-                then begin balanceRL l k r' end
-                else begin balanceRR l k r' end
-            end else make l k r' 
+            all_balanceR l k r'
         end 
 
 let rec find_min #a (#f: comparaison a) (input: set f{Node? input}) : a = 
@@ -120,20 +125,12 @@ let rec remove #a (#f: comparaison a) (x:a) (input:set f): Tot (out: set f) (dec
         | LT -> 
         begin 
             let l' = remove x l in
-            if height r >= height l' + 2 then begin
-                if height (left r) > height (right r) 
-                then balanceRL l' k r
-                else balanceRR l' k r
-            end else make l' k r
+            if Leaf? r then make l' k r else all_balanceR l' k r
         end 
         | GT -> 
         begin
             let r' = remove x r in 
-            if height l >= height r' + 2 then begin 
-                if height (left l) < height (right l) 
-                then balanceLR l k r' 
-                else balanceLL l k r'
-            end else make l k r'
+            if Leaf? l then make l k r' else all_balanceL l k r'
         end 
         | EQ -> 
             if Leaf? l then r else 
@@ -141,19 +138,32 @@ let rec remove #a (#f: comparaison a) (x:a) (input:set f): Tot (out: set f) (dec
 
             let k' = find_min r in 
             let r' = remove k' r in
-            
-            if delta l r' >= 2 then begin 
-                if height (left l) < height (right l) 
-                then balanceLR l k' r' 
-                else balanceLL l k' r'
-            end else make l k' r'
-            
+            if Leaf? l then make l k' r' else all_balanceL l k' r'
         end 
 
 (* proof *)
 
 #push-options "--z3rlimit 60"
 
+let rec mem_lemma #a (#f: comparaison a) (x:a) (input:set f) : 
+    Lemma 
+        (requires is_avl input)
+        (ensures (member x input <==> mem x input))
+    
+    = match input with 
+    | Node l k _ r -> begin 
+        match f x k with 
+        | LT -> begin 
+            assert (forall y. member y r ==> LT? (f x y));
+            mem_lemma x l
+        end 
+        | GT -> begin 
+            assert (forall y. member y l ==> GT? (f x y));
+            mem_lemma x r
+        end 
+        | EQ -> ()
+    end 
+    | Leaf -> ()
 
 let rec find_min_lemma #a (#f: comparaison a) (input: set f{Node? input}) : 
     Lemma 
@@ -300,6 +310,66 @@ private let balanceRL_lemma #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Nod
             make_lemma l k rll; make_lemma rlr rk rr; 
             make_lemma (make l k rll) rlk (make rlr rk rr)
 
+let all_balanceL_lemma #a (#f: comparaison a) (l: set f{Node? l}) (k:a) (r:set f): 
+    Lemma
+        (requires
+            is_avl l /\ is_avl r /\ 
+            (forall x. member x l ==> LT? (f x k)) /\
+            (forall x. member x r ==> GT? (f x k)) /\
+            height l >= height r - 1 /\ height l <= height r + 2
+        )
+        (ensures (
+            let out = all_balanceL l k r in is_avl out /\ 
+            (forall x. member x out <==> (member x l \/ member x r \/ EQ? (f x k))) /\ 
+            
+            (height l = height r + 2 ==> (
+                height out <= 1 + height l /\ height out >= height l
+            )) /\
+
+            (height l < height r + 2 ==> (
+                height out = 1 + max (height r) (height l)
+            ))
+        )) = 
+
+    if delta l r >= 2 then begin
+        if height (left l) < height (right l) 
+        then balanceLR_lemma l k r
+        else begin 
+            if height (left l) = height (right l)
+            then balanceLL_lemma2 l k r 
+            else balanceLL_lemma  l k r
+    end end else make_lemma l k r
+    
+let all_balanceR_lemma #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Node? r}) : 
+    Lemma 
+        (requires 
+            is_avl l /\ is_avl r /\
+            (forall x. member x l ==> LT? (f x k)) /\
+            (forall x. member x r ==> GT? (f x k)) /\
+            height r >= height l - 1 /\ height r <= 2 + height l
+        )
+        (ensures (
+            let out = all_balanceR l k r in is_avl out /\ 
+            (forall x. member x out <==> (member x l \/ member x r \/ EQ? (f x k))) /\
+
+            (height r = height l + 2 ==> (
+                height out <= 1 + height r /\ height out >= height r
+            )) /\
+
+            (height r < height l + 2 ==> (
+                height out = 1 + max (height l) (height r)
+            ))
+
+        )) = 
+
+    if delta l r >= 2 then begin
+        if height (left r) > height (right r)
+        then balanceRL_lemma l k r
+        else begin
+            if height (left r) = height (right r)
+            then balanceRR_lemma2 l k r
+            else balanceRR_lemma  l k r
+    end end else make_lemma l k r
 
 let rec add_lemma #a (#f: comparaison a) (x:a) (input:set f): 
     Lemma 
@@ -307,7 +377,7 @@ let rec add_lemma #a (#f: comparaison a) (x:a) (input:set f):
         (ensures (
             let out = add x input in 
             is_avl out /\ height out >= height input /\ height out <= height input + 1 /\
-            (height out > height input ==> height (left out) <> height (right out) || height out <= 1) /\ 
+            //(height out > height input ==> height (left out) <> height (right out) || height out <= 1) /\ 
             (forall y. member y out <==> (member y input \/ EQ? (f x y)))
         ))
     
@@ -317,24 +387,16 @@ let rec add_lemma #a (#f: comparaison a) (x:a) (input:set f):
         | EQ -> make_lemma l x r
         | LT -> 
         begin 
-            
             add_lemma x l; 
             let l' = add x l in 
-            if delta l' r >= 2 then begin 
-                if height (left l') < height (right l') 
-                then balanceLR_lemma l' k r
-                else balanceLL_lemma l' k r
-            end else make_lemma l' k r 
+            all_balanceL_lemma l' k r
         end 
         | GT -> 
         begin 
-            add_lemma x r; 
-            let r' = add x r in 
-            if delta l r' >= 2 then begin 
-                if height (left r') > height (right r') 
-                then balanceRL_lemma l k r' 
-                else balanceRR_lemma l k r' 
-            end else make_lemma l k r' 
+            admit ()
+            //add_lemma x r; 
+            //let r' = add x r in 
+            //all_balanceR_lemma l k r'
         end 
 
 let rec remove_min_lemma #a (#f: comparaison a) (input:set f{Node? input}): 
@@ -443,29 +505,13 @@ let rec remove_lemma #a (#f: comparaison a) (x:a) (input:set f):
         begin 
             remove_lemma x l; 
             let l' = remove x l in
-            if Node? r && delta l' r >= 2 then begin
-                if height (left r) > height (right r) 
-                then balanceRL_lemma l' k r
-                else begin 
-                    if height (left r) = height (right r)
-                    then balanceRR_lemma2 l' k r
-                    else balanceRR_lemma  l' k r   
-                end
-            end else make_lemma l' k r
+            if Leaf? r then make_lemma l' k r else all_balanceR_lemma l' k r
         end 
         | GT -> 
         begin
             remove_lemma x r; 
             let r' = remove x r in 
-            if Node? l && delta l r' >= 2 then begin 
-                if height (left l) < height (right l) 
-                then balanceLR_lemma l k r' 
-                else begin
-                    if height (left l) = height (right l)
-                    then balanceLL_lemma2 l k r'
-                    else balanceLL_lemma  l k r'
-                end
-            end else make_lemma l k r'
+            if Leaf? l then make_lemma l k r' else all_balanceL_lemma l k r'
         end 
         | EQ -> 
             if Leaf? l then () else 
@@ -478,15 +524,7 @@ let rec remove_lemma #a (#f: comparaison a) (x:a) (input:set f):
 
             lemma_EQ r; lemma_EQ r';
             
-            if delta l r' >= 2 then begin 
-                if height (left l) < height (right l) 
-                then balanceLR_lemma l k' r'
-                else begin 
-                    if height (left l) = height (right l) 
-                    then balanceLL_lemma2 l k' r' 
-                    else balanceLL_lemma  l k' r'
-                end 
-            end else make_lemma l k' r' 
+            if Leaf? l then make_lemma l k' r' else all_balanceL_lemma l k' r' 
             
         end
 

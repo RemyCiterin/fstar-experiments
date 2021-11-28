@@ -1,6 +1,6 @@
 open Prims
 let rec mem :
-  'a . 'a BinTree.comparaison -> 'a -> ('a, unit) BinTree.set -> Prims.bool =
+  'a . 'a Compare.comparaison -> 'a -> ('a, unit) BinTree.set -> Prims.bool =
   fun f ->
     fun x ->
       fun input ->
@@ -8,12 +8,12 @@ let rec mem :
         | BinTree.Leaf -> false
         | BinTree.Node (l, k, uu___, r) ->
             (match f x k with
-             | BinTree.LT -> mem f x l
-             | BinTree.GT -> mem f x r
-             | BinTree.EQ -> true)
+             | Compare.LT -> mem f x l
+             | Compare.GT -> mem f x r
+             | Compare.EQ -> true)
 let balanceLL :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       ('a, unit) BinTree.set ->
         'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
@@ -26,7 +26,7 @@ let balanceLL :
               BinTree.make f ll lk (BinTree.make f lr k r)
 let balanceRR :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       ('a, unit) BinTree.set ->
         'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
@@ -39,7 +39,7 @@ let balanceRR :
               BinTree.make f (BinTree.make f l k rl) rk rr
 let balanceLR :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       ('a, unit) BinTree.set ->
         'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
@@ -55,7 +55,7 @@ let balanceLR :
                      (BinTree.make f lrr k r))
 let balanceRL :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       ('a, unit) BinTree.set ->
         'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
@@ -69,10 +69,49 @@ let balanceRL :
                | BinTree.Node (rll, rlk, uu___1, rlr) ->
                    BinTree.make f (BinTree.make f l k rll) rlk
                      (BinTree.make f rlr rk rr))
-type intSet = (Prims.int, unit) BinTree.set
+let all_balanceL :
+  'a .
+    'a Compare.comparaison ->
+      ('a, unit) BinTree.set ->
+        'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
+  =
+  fun f ->
+    fun l ->
+      fun k ->
+        fun r ->
+          if
+            (BinTree.height f l) >=
+              ((Prims.of_int (2)) + (BinTree.height f r))
+          then
+            (if
+               (BinTree.height f (BinTree.left f l)) <
+                 (BinTree.height f (BinTree.right f l))
+             then balanceLR f l k r
+             else balanceLL f l k r)
+          else BinTree.make f l k r
+let all_balanceR :
+  'a .
+    'a Compare.comparaison ->
+      ('a, unit) BinTree.set ->
+        'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
+  =
+  fun f ->
+    fun l ->
+      fun k ->
+        fun r ->
+          if
+            (BinTree.height f r) >=
+              ((BinTree.height f l) + (Prims.of_int (2)))
+          then
+            (if
+               (BinTree.height f (BinTree.left f r)) >
+                 (BinTree.height f (BinTree.right f r))
+             then balanceRL f l k r
+             else balanceRR f l k r)
+          else BinTree.make f l k r
 let rec add :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
   fun f ->
@@ -82,40 +121,18 @@ let rec add :
         | BinTree.Leaf -> BinTree.make f BinTree.Leaf x BinTree.Leaf
         | BinTree.Node (l, k, uu___, r) ->
             (match f x k with
-             | BinTree.EQ -> BinTree.make f l x r
-             | BinTree.LT ->
-                 let l' = add f x l in
-                 if
-                   (BinTree.height f l') >=
-                     ((Prims.of_int (2)) + (BinTree.height f r))
-                 then
-                   (if
-                      (BinTree.height f (BinTree.left f l')) <
-                        (BinTree.height f (BinTree.right f l'))
-                    then balanceLR f l' k r
-                    else balanceLL f l' k r)
-                 else BinTree.make f l' k r
-             | BinTree.GT ->
-                 let r' = add f x r in
-                 if
-                   (BinTree.height f r') >=
-                     ((BinTree.height f l) + (Prims.of_int (2)))
-                 then
-                   (if
-                      (BinTree.height f (BinTree.left f r')) >
-                        (BinTree.height f (BinTree.right f r'))
-                    then balanceRL f l k r'
-                    else balanceRR f l k r')
-                 else BinTree.make f l k r')
+             | Compare.EQ -> BinTree.make f l x r
+             | Compare.LT -> let l' = add f x l in all_balanceL f l' k r
+             | Compare.GT -> let r' = add f x r in all_balanceR f l k r')
 let rec find_min :
-  'a . 'a BinTree.comparaison -> ('a, unit) BinTree.set -> 'a =
+  'a . 'a Compare.comparaison -> ('a, unit) BinTree.set -> 'a =
   fun f ->
     fun input ->
       match input with
       | BinTree.Node (BinTree.Leaf, k, h, r) -> k
       | BinTree.Node (l, k, uu___, r) -> find_min f l
 let rec find_max :
-  'a . 'a BinTree.comparaison -> ('a, unit) BinTree.set -> 'a =
+  'a . 'a Compare.comparaison -> ('a, unit) BinTree.set -> 'a =
   fun f ->
     fun input ->
       match input with
@@ -123,7 +140,7 @@ let rec find_max :
       | BinTree.Node (l, k, uu___, r) -> find_max f r
 let rec remove_min :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
   fun f ->
@@ -144,7 +161,7 @@ let rec remove_min :
           else BinTree.make f l' k r
 let rec remove_max :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
   fun f ->
@@ -165,7 +182,7 @@ let rec remove_max :
           else BinTree.make f l k r'
 let rec remove :
   'a .
-    'a BinTree.comparaison ->
+    'a Compare.comparaison ->
       'a -> ('a, unit) BinTree.set -> ('a, unit) BinTree.set
   =
   fun f ->
@@ -175,31 +192,17 @@ let rec remove :
         | BinTree.Leaf -> input
         | BinTree.Node (l, k, uu___, r) ->
             (match f x k with
-             | BinTree.LT ->
+             | Compare.LT ->
                  let l' = remove f x l in
-                 if
-                   (BinTree.height f r) >=
-                     ((BinTree.height f l') + (Prims.of_int (2)))
-                 then
-                   (if
-                      (BinTree.height f (BinTree.left f r)) >
-                        (BinTree.height f (BinTree.right f r))
-                    then balanceRL f l' k r
-                    else balanceRR f l' k r)
-                 else BinTree.make f l' k r
-             | BinTree.GT ->
+                 if BinTree.uu___is_Leaf f r
+                 then BinTree.make f l' k r
+                 else all_balanceR f l' k r
+             | Compare.GT ->
                  let r' = remove f x r in
-                 if
-                   (BinTree.height f l) >=
-                     ((BinTree.height f r') + (Prims.of_int (2)))
-                 then
-                   (if
-                      (BinTree.height f (BinTree.left f l)) <
-                        (BinTree.height f (BinTree.right f l))
-                    then balanceLR f l k r'
-                    else balanceLL f l k r')
-                 else BinTree.make f l k r'
-             | BinTree.EQ ->
+                 if BinTree.uu___is_Leaf f l
+                 then BinTree.make f l k r'
+                 else all_balanceL f l k r'
+             | Compare.EQ ->
                  if BinTree.uu___is_Leaf f l
                  then r
                  else
@@ -208,14 +211,12 @@ let rec remove :
                    else
                      (let k' = find_min f r in
                       let r' = remove f k' r in
-                      if (BinTree.delta f l r') >= (Prims.of_int (2))
-                      then
-                        (if
-                           (BinTree.height f (BinTree.left f l)) <
-                             (BinTree.height f (BinTree.right f l))
-                         then balanceLR f l k' r'
-                         else balanceLL f l k' r')
-                      else BinTree.make f l k' r'))
+                      if BinTree.uu___is_Leaf f l
+                      then BinTree.make f l k' r'
+                      else all_balanceL f l k' r'))
+
+
+
 
 
 
