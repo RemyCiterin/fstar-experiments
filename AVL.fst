@@ -393,10 +393,9 @@ let rec add_lemma #a (#f: comparaison a) (x:a) (input:set f):
         end 
         | GT -> 
         begin 
-            admit ()
-            //add_lemma x r; 
-            //let r' = add x r in 
-            //all_balanceR_lemma l k r'
+            add_lemma x r; 
+            let r' = add x r in 
+            all_balanceR_lemma l k r'
         end 
 
 let rec remove_min_lemma #a (#f: comparaison a) (input:set f{Node? input}): 

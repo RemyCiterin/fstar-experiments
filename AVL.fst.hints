@@ -1,5 +1,5 @@
 [
-  "MÄπn\u0004—ü¸Œ$∏\u000b.&Ï\u001e",
+  "ê\u0000\u0011’\u0006í·ü°u‡cp\u001ds}",
   [
     [
       "AVL.mem",
@@ -969,7 +969,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "ec9b967c2b8396d36f6a46246c368c8e"
+      "1b0059f0dce65c1e23f927cb705ac950"
     ],
     [
       "AVL.add_lemma",
@@ -1043,7 +1043,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "062d77c25cd0a2c51b322ae14ea5aef3"
+      "758a3bc24000cff476389f00499acb49"
     ],
     [
       "AVL.remove_min_lemma",
@@ -1052,7 +1052,7 @@
       1,
       [ "@query" ],
       0,
-      "f9ed16ac1cc4f1dbc73c958e4c502bd8"
+      "17b7fd61710118245c31a167f4de7f1d"
     ],
     [
       "AVL.remove_min_lemma",
@@ -1133,7 +1133,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "488b7b056c77799c1768c3245a805507"
+      "9f159c336349f6535e15621114c676b2"
     ],
     [
       "AVL.remove_max_lemma",
@@ -1142,7 +1142,7 @@
       1,
       [ "@query" ],
       0,
-      "bd63868878839816c616be4596164d86"
+      "0ff624994e2c6f422a7f88ee59903c69"
     ],
     [
       "AVL.remove_max_lemma",
@@ -1223,7 +1223,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "094b6cc049b5cf2566914b8cce249410"
+      "9e638a58df67126bb09e0996ef9bb39a"
     ],
     [
       "AVL.remove_lemma",
@@ -1304,7 +1304,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "91b0d5bb198c0b66fbe2e98baaf6460f"
+      "87706487924cc2a46f5f741b450e7f73"
     ]
   ]
 ]
