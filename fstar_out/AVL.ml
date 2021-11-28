@@ -85,7 +85,9 @@ let rec add :
              | BinTree.EQ -> BinTree.make f l x r
              | BinTree.LT ->
                  let l' = add f x l in
-                 if (BinTree.delta f l' r) >= (Prims.of_int (2))
+                 if
+                   (BinTree.height f l') >=
+                     ((Prims.of_int (2)) + (BinTree.height f r))
                  then
                    (if
                       (BinTree.height f (BinTree.left f l')) <
@@ -95,7 +97,9 @@ let rec add :
                  else BinTree.make f l' k r
              | BinTree.GT ->
                  let r' = add f x r in
-                 if (BinTree.delta f l r') >= (Prims.of_int (2))
+                 if
+                   (BinTree.height f r') >=
+                     ((BinTree.height f l) + (Prims.of_int (2)))
                  then
                    (if
                       (BinTree.height f (BinTree.left f r')) >
@@ -117,6 +121,48 @@ let rec find_max :
       match input with
       | BinTree.Node (l, k, h, BinTree.Leaf) -> k
       | BinTree.Node (l, k, uu___, r) -> find_max f r
+let rec remove_min :
+  'a .
+    'a BinTree.comparaison ->
+      ('a, unit) BinTree.set -> ('a, unit) BinTree.set
+  =
+  fun f ->
+    fun input ->
+      match input with
+      | BinTree.Node (BinTree.Leaf, k, uu___, r) -> r
+      | BinTree.Node (l, k, uu___, r) ->
+          let l' = remove_min f l in
+          if
+            (BinTree.height f r) >=
+              ((BinTree.height f l') + (Prims.of_int (2)))
+          then
+            (if
+               (BinTree.height f (BinTree.left f r)) >
+                 (BinTree.height f (BinTree.right f r))
+             then balanceRL f l' k r
+             else balanceRR f l' k r)
+          else BinTree.make f l' k r
+let rec remove_max :
+  'a .
+    'a BinTree.comparaison ->
+      ('a, unit) BinTree.set -> ('a, unit) BinTree.set
+  =
+  fun f ->
+    fun input ->
+      match input with
+      | BinTree.Node (l, k, uu___, BinTree.Leaf) -> l
+      | BinTree.Node (l, k, uu___, r) ->
+          let r' = remove_max f r in
+          if
+            (BinTree.height f l) >=
+              ((BinTree.height f r') + (Prims.of_int (2)))
+          then
+            (if
+               (BinTree.height f (BinTree.left f l)) <
+                 (BinTree.height f (BinTree.right f l))
+             then balanceLR f l k r'
+             else balanceLL f l k r')
+          else BinTree.make f l k r'
 let rec remove :
   'a .
     'a BinTree.comparaison ->
@@ -132,8 +178,8 @@ let rec remove :
              | BinTree.LT ->
                  let l' = remove f x l in
                  if
-                   (BinTree.uu___is_Node f r) &&
-                     ((BinTree.delta f l' r) >= (Prims.of_int (2)))
+                   (BinTree.height f r) >=
+                     ((BinTree.height f l') + (Prims.of_int (2)))
                  then
                    (if
                       (BinTree.height f (BinTree.left f r)) >
@@ -144,8 +190,8 @@ let rec remove :
              | BinTree.GT ->
                  let r' = remove f x r in
                  if
-                   (BinTree.uu___is_Node f l) &&
-                     ((BinTree.delta f l r') >= (Prims.of_int (2)))
+                   (BinTree.height f l) >=
+                     ((BinTree.height f r') + (Prims.of_int (2)))
                  then
                    (if
                       (BinTree.height f (BinTree.left f l)) <
@@ -170,6 +216,8 @@ let rec remove :
                          then balanceLR f l k' r'
                          else balanceLL f l k' r')
                       else BinTree.make f l k' r'))
+
+
 
 
 

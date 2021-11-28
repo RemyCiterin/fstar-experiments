@@ -48,8 +48,6 @@ let intSet = set (fun x y -> if x < y then LT else if x = y then EQ else GT)
 
 
 
-
-
 let rec add #a (#f: comparaison a) (x:a) (input:set f): 
     Tot (out:set f{Node? out /\ 
         (GT? (f x (key out)) ==> Node? (right out)) /\
@@ -63,7 +61,7 @@ let rec add #a (#f: comparaison a) (x:a) (input:set f):
         | LT -> 
         begin 
             let l' = add x l in 
-            if delta l' r >= 2 then begin assert(Node? l');
+            if height l' >= 2 + height r then begin assert(Node? l');
                 if height (left l') < height (right l') 
                 then balanceLR l' k r
                 else balanceLL l' k r
@@ -72,7 +70,7 @@ let rec add #a (#f: comparaison a) (x:a) (input:set f):
         | GT -> 
         begin 
             let r' = add x r in 
-            if delta l r' >= 2 then begin assert(Node? r');
+            if height r' >= height l + 2 then begin assert(Node? r');
                 if height (left r') > height (right r') 
                 then begin balanceRL l k r' end
                 else begin balanceRR l k r' end
@@ -89,8 +87,35 @@ let rec find_max #a (#f: comparaison a) (input: set f{Node? input}) : a =
     | Node l k h Leaf -> k
     | Node l k _ r -> find_max r
 
-let rec remove #a (#f: comparaison a) (x:a) (input:set f): Tot (out: set f) (decreases input) = 
 
+let rec remove_min #a (#f: comparaison a) (input:set f{Node? input}): Tot (out: set f) (decreases input) = 
+    match input with 
+    | Node Leaf k _ r -> r 
+    | Node l k _ r -> 
+    begin 
+        let l' = remove_min l in
+        if height r >= height l' + 2 then begin
+            if height (left r) > height (right r) 
+            then balanceRL l' k r
+            else balanceRR l' k r
+        end else make l' k r
+    end 
+
+let rec remove_max #a (#f: comparaison a) (input:set f{Node? input}): Tot (out: set f) (decreases input) = 
+    match input with 
+    | Node l k _ Leaf -> l
+    | Node l k _ r -> 
+    begin 
+        let r' = remove_max r in
+        if height l >= height r' + 2 then begin 
+            if height (left l) < height (right l) 
+            then balanceLR l k r' 
+            else balanceLL l k r'
+        end else make l k r'
+    end
+
+
+let rec remove #a (#f: comparaison a) (x:a) (input:set f): Tot (out: set f) (decreases input) = 
 
     match input with 
     | Leaf -> input
@@ -98,7 +123,7 @@ let rec remove #a (#f: comparaison a) (x:a) (input:set f): Tot (out: set f) (dec
         | LT -> 
         begin 
             let l' = remove x l in
-            if Node? r && delta l' r >= 2 then begin
+            if height r >= height l' + 2 then begin
                 if height (left r) > height (right r) 
                 then balanceRL l' k r
                 else balanceRR l' k r
@@ -107,7 +132,7 @@ let rec remove #a (#f: comparaison a) (x:a) (input:set f): Tot (out: set f) (dec
         | GT -> 
         begin
             let r' = remove x r in 
-            if Node? l && delta l r' >= 2 then begin 
+            if height l >= height r' + 2 then begin 
                 if height (left l) < height (right l) 
                 then balanceLR l k r' 
                 else balanceLL l k r'
@@ -314,6 +339,88 @@ let rec add_lemma #a (#f: comparaison a) (x:a) (input:set f):
                 else balanceRR_lemma l k r' 
             end else make_lemma l k r' 
         end 
+
+let rec remove_min_lemma #a (#f: comparaison a) (input:set f{Node? input}): 
+    Lemma 
+        (requires is_avl input) 
+
+        (ensures (
+            let out = remove_min input in 
+            is_avl out /\ height out <= height input /\ 
+            height out >= height input - 1 /\ 
+
+            (forall y. member y out <==> (
+                member y input /\ ~(EQ? (f (find_min input) y))
+            ))
+        ))
+        
+        (decreases input)
+    
+    = match input with 
+    | Node Leaf k _ r -> assert (EQ? (f (find_min input) k))
+    | Node l k _ r -> 
+    begin
+
+        let l' = remove_min l in
+
+
+        find_min_lemma l; 
+        lemma_EQ l; lemma_EQ l'; 
+        assert (find_min l == find_min input);
+        assert (forall x. member x r ==> GT? (f x (find_min l)));
+        remove_min_lemma l; 
+
+        if height r >= height l' + 2 then begin
+                if height (left r) > height (right r) 
+                then balanceRL_lemma l' k r
+                else begin 
+                    if height (left r) = height (right r)
+                    then balanceRR_lemma2 l' k r
+                    else balanceRR_lemma  l' k r   
+                end
+            end else make_lemma l' k r
+    end
+
+let rec remove_max_lemma #a (#f: comparaison a) (input:set f{Node? input}): 
+    Lemma 
+        (requires is_avl input) 
+
+        (ensures (
+            let out = remove_max input in 
+            is_avl out /\ height out <= height input /\ 
+            height out >= height input - 1 /\ 
+
+            (forall y. member y out <==> (
+                member y input /\ ~(EQ? (f (find_max input) y))
+            ))
+        ))
+        
+        (decreases input)
+    
+    = match input with 
+    | Node l k _ Leaf -> assert (EQ? (f (find_max input) k))
+    | Node l k _ r -> 
+    begin
+
+        let r' = remove_max r in
+
+
+        find_max_lemma r; 
+        lemma_EQ r; lemma_EQ r'; 
+        assert (find_max r == find_max input);
+        assert (forall x. member x l ==> LT? (f x (find_max r)));
+        remove_max_lemma r;
+
+        if height l >= height r' + 2 then begin
+                if height (left l) < height (right l) 
+                then balanceLR_lemma l k r'
+                else begin 
+                    if height (left l) = height (right l)
+                    then balanceLL_lemma2 l k r'
+                    else balanceLL_lemma  l k r'   
+                end
+            end else make_lemma l k r'
+    end
 
 let rec remove_lemma #a (#f: comparaison a) (x:a) (input:set f): 
     Lemma 
