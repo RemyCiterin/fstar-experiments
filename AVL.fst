@@ -44,9 +44,6 @@ private let balanceRL #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Node? r /
         | Node rll rlk _ rlr -> make (make l k rll) rlk (make rlr rk rr)
 
 
-let intSet = set (fun x y -> if x < y then LT else if x = y then EQ else GT)
-
-
 
 let rec add #a (#f: comparaison a) (x:a) (input:set f): 
     Tot (out:set f{Node? out /\ 
