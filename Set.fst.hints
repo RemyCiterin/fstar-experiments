@@ -1,0 +1,80 @@
+[
+  "ù¯Ä£î¸Îô\u000eëT{ßèÇÈ",
+  [
+    [
+      "Set.mem",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Set.set",
+        "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9"
+      ],
+      0,
+      "b870ef19b85fe86394e9f7312f571996"
+    ],
+    [
+      "Set.add",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_AVL.add.fuel_instrumented",
+        "@fuel_correspondence_AVL.mem.fuel_instrumented",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented", "@query",
+        "BinTree_pretyping_faff18074dd1ff8eacfaf3cb19a8748a",
+        "bool_inversion", "data_elim_BinTree.Node",
+        "disc_equation_BinTree.Node", "disc_equation_Compare.LT",
+        "equation_BinTree.key", "equation_BinTree.left",
+        "equation_BinTree.make", "equation_Compare.comparaison",
+        "equation_Compare.symmetry_EQ", "equation_Set.comparaison",
+        "equation_Set.mem", "equation_Set.set",
+        "equation_with_fuel_AVL.add.fuel_instrumented",
+        "equation_with_fuel_AVL.mem.fuel_instrumented",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "fuel_guarded_inversion_BinTree.set", "primitive_Prims.op_BarBar",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BinTree.Node_left",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_4697545a846a2329f3ff753809ce18fa",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9",
+        "refinement_interpretation_Tm_refine_9a3478427f9f406f206f476b3518e33e",
+        "token_correspondence_AVL.add.fuel_instrumented", "typing_AVL.mem",
+        "typing_BinTree.member", "typing_Set.mem"
+      ],
+      0,
+      "27785df9b1c7d305a4d0a46aeba92d67"
+    ],
+    [
+      "Set.remove",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_AVL.remove.fuel_instrumented",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented", "@query",
+        "BinTree_interpretation_Tm_arrow_8782fff1e8973b2e53454e7950f6b114",
+        "bool_inversion", "disc_equation_BinTree.EQ",
+        "equation_BinTree.comparaison", "equation_BinTree.reflexivity",
+        "equation_Set.comparaison", "equation_Set.mem", "equation_Set.set",
+        "equation_with_fuel_AVL.remove.fuel_instrumented",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "fuel_guarded_inversion_BinTree.set",
+        "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9",
+        "refinement_interpretation_Tm_refine_9a3478427f9f406f206f476b3518e33e",
+        "refinement_interpretation_Tm_refine_cc5495a04f6ec5535fd03a43b0cbd045",
+        "token_correspondence_AVL.remove.fuel_instrumented",
+        "typing_AVL.mem", "typing_AVL.remove", "typing_BinTree.member",
+        "typing_BinTree.uu___is_EQ", "typing_Set.mem"
+      ],
+      0,
+      "01c0a9127ca610799fb1839a116248ea"
+    ]
+  ]
+]
