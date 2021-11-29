@@ -1,5 +1,5 @@
 [
-  "ù¯Ä£î¸Îô\u000eëT{ßèÇÈ",
+  "\të\f\u0019¯\u0000Ð¥”¶«ÍþC÷\\",
   [
     [
       "Set.mem",
@@ -11,7 +11,7 @@
         "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9"
       ],
       0,
-      "b870ef19b85fe86394e9f7312f571996"
+      "21f39fd6ba47686d7682be05b4ccece7"
     ],
     [
       "Set.add",
@@ -48,7 +48,7 @@
         "typing_BinTree.member", "typing_Set.mem"
       ],
       0,
-      "27785df9b1c7d305a4d0a46aeba92d67"
+      "6aa0000db0ad7c9b6e7179d4fea33c84"
     ],
     [
       "Set.remove",
@@ -74,7 +74,159 @@
         "typing_BinTree.uu___is_EQ", "typing_Set.mem"
       ],
       0,
-      "01c0a9127ca610799fb1839a116248ea"
+      "e03b9a34333d52564091d7f568ed18ef"
+    ],
+    [
+      "Set.find_min",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "bool_inversion", "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node", "disc_equation_BinTree.Leaf",
+        "disc_equation_BinTree.Node", "disc_equation_Compare.EQ",
+        "equation_Compare.comparaison", "equation_Compare.is_GE",
+        "equation_Compare.reflexivity", "equation_Set.comparaison",
+        "equation_Set.mem", "equation_Set.set",
+        "fuel_guarded_inversion_BinTree.set",
+        "lemma_FStar.Pervasives.invertOption", "primitive_Prims.op_BarBar",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BinTree.Node_left",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9",
+        "refinement_interpretation_Tm_refine_9a3478427f9f406f206f476b3518e33e",
+        "typing_BinTree.member", "typing_Compare.uu___is_EQ",
+        "typing_Set.mem"
+      ],
+      0,
+      "3ba8e14c91bd4a31481e914d75c0ea35"
+    ],
+    [
+      "Set.find_max",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "bool_inversion", "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node", "disc_equation_BinTree.Leaf",
+        "disc_equation_BinTree.Node", "disc_equation_Compare.EQ",
+        "equation_Compare.comparaison", "equation_Compare.is_LE",
+        "equation_Compare.reflexivity", "equation_Set.comparaison",
+        "equation_Set.mem", "equation_Set.set",
+        "fuel_guarded_inversion_BinTree.set",
+        "lemma_FStar.Pervasives.invertOption", "primitive_Prims.op_BarBar",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BinTree.Node_left",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9",
+        "refinement_interpretation_Tm_refine_9a3478427f9f406f206f476b3518e33e",
+        "typing_BinTree.member", "typing_Compare.uu___is_EQ",
+        "typing_Set.mem"
+      ],
+      0,
+      "13b791e06ac15a9145d332dfdf701a00"
+    ],
+    [
+      "Set.remove_min",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "bool_inversion", "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node",
+        "constructor_distinct_FStar.Pervasives.Native.None",
+        "constructor_distinct_FStar.Pervasives.Native.Some",
+        "disc_equation_BinTree.Leaf", "disc_equation_BinTree.Node",
+        "disc_equation_Compare.EQ",
+        "disc_equation_FStar.Pervasives.Native.None",
+        "disc_equation_FStar.Pervasives.Native.Some",
+        "equation_Compare.comparaison", "equation_Compare.reflexivity",
+        "equation_Set.comparaison", "equation_Set.find_min",
+        "equation_Set.mem", "equation_Set.set",
+        "fuel_guarded_inversion_BinTree.set",
+        "lemma_FStar.Pervasives.invertOption",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BinTree.Node_left",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.None_a",
+        "projection_inverse_FStar.Pervasives.Native.Some_a",
+        "projection_inverse_FStar.Pervasives.Native.Some_v",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9",
+        "refinement_interpretation_Tm_refine_9a3478427f9f406f206f476b3518e33e",
+        "refinement_interpretation_Tm_refine_f941f8db84cbd250ec017b0cd1c63a78",
+        "typing_Compare.uu___is_EQ", "typing_Set.find_min", "typing_Set.mem"
+      ],
+      0,
+      "b2d79bd936790b1b8a5a7c9de5a467e1"
+    ],
+    [
+      "Set.remove_max",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "bool_inversion", "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node",
+        "constructor_distinct_FStar.Pervasives.Native.None",
+        "constructor_distinct_FStar.Pervasives.Native.Some",
+        "disc_equation_BinTree.Leaf", "disc_equation_BinTree.Node",
+        "disc_equation_Compare.EQ",
+        "disc_equation_FStar.Pervasives.Native.None",
+        "disc_equation_FStar.Pervasives.Native.Some",
+        "equation_Compare.comparaison", "equation_Compare.reflexivity",
+        "equation_Set.comparaison", "equation_Set.find_max",
+        "equation_Set.mem", "equation_Set.set",
+        "fuel_guarded_inversion_BinTree.set",
+        "lemma_FStar.Pervasives.invertOption",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BinTree.Node_left",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.None_a",
+        "projection_inverse_FStar.Pervasives.Native.Some_a",
+        "projection_inverse_FStar.Pervasives.Native.Some_v",
+        "refinement_interpretation_Tm_refine_12f34fcd83528a09e8917b406154617e",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "refinement_interpretation_Tm_refine_97283e78e6c16ca0f408caec9c5b86c9",
+        "refinement_interpretation_Tm_refine_9a3478427f9f406f206f476b3518e33e",
+        "typing_Compare.uu___is_EQ", "typing_Set.find_max", "typing_Set.mem"
+      ],
+      0,
+      "eca1d54e285fd733112e0bda24c4e9b3"
     ]
   ]
 ]
