@@ -3,9 +3,6 @@ module BinTree
 open FStar.Classical
 open Compare 
 
-// #set-options "--z3rlimit 50"
-
-
 
 type set #a (compare: comparaison a) = 
     | Node : left: set compare -> a -> nat -> set compare -> set compare

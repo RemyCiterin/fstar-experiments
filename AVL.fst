@@ -310,7 +310,7 @@ private let balanceRL_lemma #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Nod
             make_lemma l k rll; make_lemma rlr rk rr; 
             make_lemma (make l k rll) rlk (make rlr rk rr)
 
-let all_balanceL_lemma #a (#f: comparaison a) (l: set f{Node? l}) (k:a) (r:set f): 
+private let all_balanceL_lemma #a (#f: comparaison a) (l: set f{Node? l}) (k:a) (r:set f): 
     Lemma
         (requires
             is_avl l /\ is_avl r /\ 
@@ -340,7 +340,7 @@ let all_balanceL_lemma #a (#f: comparaison a) (l: set f{Node? l}) (k:a) (r:set f
             else balanceLL_lemma  l k r
     end end else make_lemma l k r
     
-let all_balanceR_lemma #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Node? r}) : 
+private let all_balanceR_lemma #a (#f: comparaison a) (l: set f) (k:a) (r:set f{Node? r}) : 
     Lemma 
         (requires 
             is_avl l /\ is_avl r /\
@@ -377,7 +377,6 @@ let rec add_lemma #a (#f: comparaison a) (x:a) (input:set f):
         (ensures (
             let out = add x input in 
             is_avl out /\ height out >= height input /\ height out <= height input + 1 /\
-            //(height out > height input ==> height (left out) <> height (right out) || height out <= 1) /\ 
             (forall y. member y out <==> (member y input \/ EQ? (f x y)))
         ))
     

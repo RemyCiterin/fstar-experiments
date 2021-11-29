@@ -1,5 +1,5 @@
 [
-  "N·CUÄ%ΩúÈc+\u0017\u0006\b,]",
+  "}∆Ø\u0003+f“˜Å9/4ççO",
   [
     [
       "BinTree.set",
@@ -125,7 +125,7 @@
         "projection_inverse_BoxBool_proj_0", "subterm_ordering_BinTree.Node"
       ],
       0,
-      "046991074e2dc55f86e6025406a44de8"
+      "6b0baa914708e52404ce4cc43eda6e43"
     ],
     [
       "BinTree.delta",
@@ -168,7 +168,7 @@
         "subterm_ordering_BinTree.Node", "typing_tok_Prims.T@tok"
       ],
       0,
-      "076e629d025534a71ebf2cb4e21a35bc"
+      "45d0c01b0e7d61f2c14d217a1bed690f"
     ],
     [
       "BinTree.make",

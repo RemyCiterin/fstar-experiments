@@ -1,6 +1,5 @@
 module Set 
 
-
 module C  = Compare 
 module BT = BinTree
 
@@ -59,8 +58,8 @@ let remove_max #a (#f: comparaison a) (input: set f) : out:set f {match find_max
         | Some m -> forall y. mem y out <==> (mem y input /\ ~(C.EQ? (f m y)))
         | None -> Leaf? input /\ Leaf? out
     } = 
-    match input with 
-    | Leaf -> Leaf 
+    match input with
+    | Leaf -> Leaf
     | Node l k _ r ->
         AVL.remove_max_lemma input;
         AVL.remove_max input
@@ -70,3 +69,4 @@ let remove_max #a (#f: comparaison a) (input: set f) : out:set f {match find_max
 // split 
 // intersection
 // difference 
+// mais ce n'est pas important pour des BDD...seul add l'est x)
