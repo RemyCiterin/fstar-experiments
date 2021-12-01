@@ -1,5 +1,5 @@
 [
-  "e]“Ž ,7Ì® (\u007f*<\\5",
+  ";÷97í\bG»t>ø<Õî_S",
   [
     [
       "AVL.mem",
@@ -28,6 +28,32 @@
       "ce305f04fdb78e8cff57c80544ad4f60"
     ],
     [
+      "AVL.find",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "binder_x_157b99e815dc43d99415725267e9c452_3",
+        "binder_x_643401eb7b12f395b5dba6b5f061eaf2_2",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_0",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_1",
+        "binder_x_fb6a7d69beb0c6763bb0961e24055c9b_4",
+        "disc_equation_BinTree.Leaf", "disc_equation_BinTree.Node",
+        "disc_equation_Compare.EQ", "disc_equation_Compare.GT",
+        "disc_equation_Compare.LT", "equation_Compare.comparaison",
+        "equation_Prims.eqtype", "fuel_guarded_inversion_BinTree.set",
+        "fuel_guarded_inversion_Compare.ordering",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "subterm_ordering_BinTree.Node", "typing_FStar.Pervasives.Native.fst"
+      ],
+      0,
+      "28f28758392c51bf263c890fa83813fb"
+    ],
+    [
       "AVL.balanceLL",
       1,
       2,
@@ -48,7 +74,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "266631b8c98322b57d63fb94002a2423"
+      "cf8a77c4b2bb0776bcc6368b967c7923"
     ],
     [
       "AVL.balanceRR",
@@ -71,7 +97,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "95c5f835a6b3d92af97585b89c6bf481"
+      "fe11f23ff82b0fa22cd745e303c987cc"
     ],
     [
       "AVL.balanceLR",
@@ -94,7 +120,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "d0043a34e9dcad9e5e003ec54bccbc0d"
+      "ffea6343374e3f022daa4d0d09ae6352"
     ],
     [
       "AVL.balanceRL",
@@ -117,7 +143,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "6997d7cb402fa0d1435bb5736369a05f"
+      "95c86fe2ba758e1e1f72f971e46a1787"
     ],
     [
       "AVL.all_balanceL",
@@ -137,7 +163,7 @@
         "typing_BinTree.right"
       ],
       0,
-      "d4cab052fa894c80cb0c5cad4e712c4f"
+      "29de22d46c118ac310c07737b4b0e74e"
     ],
     [
       "AVL.all_balanceR",
@@ -157,7 +183,7 @@
         "typing_BinTree.right"
       ],
       0,
-      "a1c5759ec2fce2aff84def3693abe9d7"
+      "fbfe137e87a6c26312169191d0b1659c"
     ],
     [
       "AVL.add",
@@ -166,7 +192,7 @@
       1,
       [ "@query" ],
       0,
-      "976d993aa9790603acbd44135e0ba3fd"
+      "a69a0d7af56d42a45cab0e319cc17f89"
     ],
     [
       "AVL.add",
@@ -221,7 +247,7 @@
         "typing_FStar.Pervasives.Native.fst", "typing_tok_Compare.EQ@tok"
       ],
       0,
-      "d56a6402b570fe14741cb50b3878bfeb"
+      "ee7dff4e2a88da75088ff54a200cf594"
     ],
     [
       "AVL.find_min",
@@ -246,7 +272,7 @@
         "subterm_ordering_BinTree.Node"
       ],
       0,
-      "62663070b09ecb5f82df601371076846"
+      "c1104c0cd8e26b45aa524dd3bf10d6b8"
     ],
     [
       "AVL.find_max",
@@ -271,7 +297,7 @@
         "subterm_ordering_BinTree.Node"
       ],
       0,
-      "2355925cc28df9248f65939a30a0226a"
+      "1b3146fb23037fcf619e80b6e74bec33"
     ],
     [
       "AVL.remove_min",
@@ -305,7 +331,7 @@
         "subterm_ordering_BinTree.Node", "typing_BinTree.height"
       ],
       0,
-      "c8078cc792f9b54399a1ffe2c8cc9f68"
+      "faeb967118907c1a20c01e025555e5b0"
     ],
     [
       "AVL.remove_max",
@@ -339,7 +365,7 @@
         "subterm_ordering_BinTree.Node", "typing_BinTree.height"
       ],
       0,
-      "807a378d23a05ba40f70d096e697f1b4"
+      "18d267d0dcb99d5866eb394e1a0dd5d9"
     ],
     [
       "AVL.remove",
@@ -367,7 +393,247 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "ee7cc1b72f074f430aafde894ce59f57"
+      "61c8f680bf80bef88d88453b5b3807b6"
+    ],
+    [
+      "AVL.mem_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_AVL.mem.fuel_instrumented",
+        "@fuel_correspondence_BinTree.is_avl.fuel_instrumented",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented",
+        "@fuel_irrelevance_AVL.mem.fuel_instrumented",
+        "@fuel_irrelevance_BinTree.is_avl.fuel_instrumented",
+        "@fuel_irrelevance_BinTree.member.fuel_instrumented", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "binder_x_157b99e815dc43d99415725267e9c452_3",
+        "binder_x_643401eb7b12f395b5dba6b5f061eaf2_2",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_0",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_1",
+        "binder_x_fb6a7d69beb0c6763bb0961e24055c9b_4", "bool_inversion",
+        "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node",
+        "constructor_distinct_Compare.EQ", "constructor_distinct_Compare.GT",
+        "constructor_distinct_Compare.LT",
+        "data_elim_FStar.Pervasives.Native.Mktuple2",
+        "data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok",
+        "disc_equation_BinTree.Leaf", "disc_equation_BinTree.Node",
+        "disc_equation_Compare.EQ", "disc_equation_Compare.GT",
+        "disc_equation_Compare.LT", "eq2-interp",
+        "equality_tok_Compare.EQ@tok", "equality_tok_Compare.GT@tok",
+        "equality_tok_Compare.LT@tok", "equation_BinTree.cmp",
+        "equation_Compare.anti_symetry", "equation_Compare.comparaison",
+        "equation_Compare.reflexivity", "equation_Compare.symmetry_EQ",
+        "equation_Compare.transitivity", "equation_Compare.transitivity_GT",
+        "equation_Compare.transitivity_LT",
+        "equation_FStar.Pervasives.Native.fst", "equation_Prims.eqtype",
+        "equation_with_fuel_AVL.mem.fuel_instrumented",
+        "equation_with_fuel_BinTree.is_avl.fuel_instrumented",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "false_interp", "fuel_guarded_inversion_BinTree.set",
+        "fuel_guarded_inversion_Compare.ordering",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "l_and-interp", "l_or-interp",
+        "l_quant_interp_348275b9356edfc9719b931320b4024e",
+        "l_quant_interp_b1e7b8793084697d03a885f663828280",
+        "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_b",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__0",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_b",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "subterm_ordering_BinTree.Node", "typing_AVL.mem",
+        "typing_Compare.uu___is_EQ", "typing_Compare.uu___is_GT",
+        "typing_Compare.uu___is_LT", "typing_FStar.Pervasives.Native.fst",
+        "typing_tok_Compare.LT@tok", "unit_inversion", "unit_typing"
+      ],
+      0,
+      "fe2068d3c2dbe87db6e41725f7f38a34"
+    ],
+    [
+      "AVL.lemma_EQ",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_BinTree.is_avl.fuel_instrumented",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented",
+        "@fuel_irrelevance_BinTree.is_avl.fuel_instrumented",
+        "@fuel_irrelevance_BinTree.member.fuel_instrumented", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "binder_x_33fcdb9a0983703e5fc43508e3abd085_3",
+        "binder_x_643401eb7b12f395b5dba6b5f061eaf2_2",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_0",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_1",
+        "binder_x_fb6a7d69beb0c6763bb0961e24055c9b_4", "bool_inversion",
+        "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node",
+        "constructor_distinct_Compare.EQ", "constructor_distinct_Compare.GT",
+        "constructor_distinct_Compare.LT", "disc_equation_BinTree.Leaf",
+        "disc_equation_BinTree.Node", "disc_equation_Compare.EQ",
+        "disc_equation_Compare.GT", "disc_equation_Compare.LT", "eq2-interp",
+        "equality_tok_Compare.GT@tok", "equality_tok_Compare.LT@tok",
+        "equation_BinTree.cmp", "equation_Compare.anti_symetry",
+        "equation_Compare.comparaison", "equation_Compare.reflexivity",
+        "equation_Compare.transitivity", "equation_Compare.transitivity_EQ",
+        "equation_Compare.transitivity_GT",
+        "equation_Compare.transitivity_LT",
+        "equation_FStar.Pervasives.Native.fst", "equation_Prims.eqtype",
+        "equation_with_fuel_BinTree.is_avl.fuel_instrumented",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "false_interp", "fuel_guarded_inversion_BinTree.set",
+        "fuel_guarded_inversion_Compare.ordering",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "l_and-interp", "l_or-interp",
+        "l_quant_interp_348275b9356edfc9719b931320b4024e",
+        "l_quant_interp_b1e7b8793084697d03a885f663828280",
+        "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_b",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__0",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_b",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "subterm_ordering_BinTree.Node", "typing_BinTree.cmp",
+        "typing_Compare.uu___is_EQ", "typing_Compare.uu___is_GT",
+        "typing_Compare.uu___is_LT", "typing_FStar.Pervasives.Native.fst",
+        "typing_tok_Compare.LT@tok", "unit_inversion", "unit_typing"
+      ],
+      0,
+      "680680ee5242bf27009ac696ec9f6483"
+    ],
+    [
+      "AVL.find_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption",
+        "@fuel_correspondence_AVL.find.fuel_instrumented", "@query",
+        "disc_equation_FStar.Pervasives.Native.None",
+        "disc_equation_FStar.Pervasives.Native.Some",
+        "equation_Prims.eqtype",
+        "kinding_FStar.Pervasives.Native.tuple2@tok",
+        "lemma_FStar.Pervasives.invertOption",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_593a6e0311cb7d5c9fee28e79aac041b",
+        "typing_AVL.find"
+      ],
+      0,
+      "b72755983e88aa1a6b5d7ca7087525fc"
+    ],
+    [
+      "AVL.find_lemma",
+      2,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_AVL.find.fuel_instrumented",
+        "@fuel_correspondence_BinTree.is_avl.fuel_instrumented",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented",
+        "@fuel_irrelevance_AVL.find.fuel_instrumented",
+        "@fuel_irrelevance_BinTree.is_avl.fuel_instrumented",
+        "@fuel_irrelevance_BinTree.member.fuel_instrumented", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "binder_x_157b99e815dc43d99415725267e9c452_3",
+        "binder_x_643401eb7b12f395b5dba6b5f061eaf2_2",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_0",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_1",
+        "binder_x_fb6a7d69beb0c6763bb0961e24055c9b_4", "bool_inversion",
+        "constructor_distinct_BinTree.Leaf",
+        "constructor_distinct_BinTree.Node",
+        "constructor_distinct_Compare.EQ", "constructor_distinct_Compare.GT",
+        "constructor_distinct_Compare.LT",
+        "constructor_distinct_FStar.Pervasives.Native.None",
+        "constructor_distinct_FStar.Pervasives.Native.Some",
+        "data_elim_FStar.Pervasives.Native.Some",
+        "data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok",
+        "disc_equation_BinTree.Leaf", "disc_equation_BinTree.Node",
+        "disc_equation_Compare.EQ", "disc_equation_Compare.GT",
+        "disc_equation_Compare.LT",
+        "disc_equation_FStar.Pervasives.Native.None",
+        "disc_equation_FStar.Pervasives.Native.Some", "eq2-interp",
+        "equality_tok_Compare.GT@tok", "equality_tok_Compare.LT@tok",
+        "equation_BinTree.cmp", "equation_Compare.anti_symetry",
+        "equation_Compare.comparaison", "equation_Compare.reflexivity",
+        "equation_Compare.transitivity", "equation_Compare.transitivity_GT",
+        "equation_Compare.transitivity_LT",
+        "equation_FStar.Pervasives.Native.fst", "equation_Prims.eqtype",
+        "equation_with_fuel_AVL.find.fuel_instrumented",
+        "equation_with_fuel_BinTree.is_avl.fuel_instrumented",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "false_interp", "fuel_guarded_inversion_BinTree.set",
+        "fuel_guarded_inversion_Compare.ordering",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.option",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "kinding_FStar.Pervasives.Native.tuple2@tok", "l_and-interp",
+        "l_or-interp", "l_quant_interp_348275b9356edfc9719b931320b4024e",
+        "l_quant_interp_b1e7b8793084697d03a885f663828280",
+        "lemma_FStar.Pervasives.invertOption",
+        "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_BinTree.Leaf_a",
+        "projection_inverse_BinTree.Leaf_b",
+        "projection_inverse_BinTree.Leaf_compare",
+        "projection_inverse_BinTree.Node__0",
+        "projection_inverse_BinTree.Node__1",
+        "projection_inverse_BinTree.Node__2",
+        "projection_inverse_BinTree.Node__3",
+        "projection_inverse_BinTree.Node_a",
+        "projection_inverse_BinTree.Node_b",
+        "projection_inverse_BinTree.Node_compare",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_FStar.Pervasives.Native.Some_v",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "subterm_ordering_BinTree.Node", "typing_AVL.find",
+        "typing_Compare.uu___is_EQ", "typing_Compare.uu___is_GT",
+        "typing_Compare.uu___is_LT", "typing_FStar.Pervasives.Native.fst",
+        "typing_tok_Compare.LT@tok", "unit_inversion", "unit_typing"
+      ],
+      0,
+      "b6c45f2b1b48a36b65c4ae8d2b2a5b3e"
+    ],
+    [
+      "AVL.find_and_mem_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "data_elim_FStar.Pervasives.Native.Mktuple2",
+        "data_elim_FStar.Pervasives.Native.Some",
+        "disc_equation_FStar.Pervasives.Native.Some",
+        "equation_Compare.comparaison", "equation_Compare.symmetry_EQ",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "typing_AVL.find"
+      ],
+      0,
+      "a7aa6780e9310a06644f6752dc061c4b"
     ],
     [
       "AVL.find_min_lemma",
@@ -376,7 +642,7 @@
       1,
       [ "@query" ],
       0,
-      "9b31d9c50ab1e9b233eb97d320d7458c"
+      "40d41d0d37e21bce1f04496945d12288"
     ],
     [
       "AVL.find_min_lemma",
@@ -434,7 +700,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "ea8981532380f639711c4999131dac21"
+      "ac5c382e884c2652ce877ed69e847c64"
     ],
     [
       "AVL.find_max_lemma",
@@ -443,7 +709,7 @@
       1,
       [ "@query" ],
       0,
-      "0b1b226ec73a52ad4937560edea8fd96"
+      "ac2be5325a27e318dad5a71524dff471"
     ],
     [
       "AVL.find_max_lemma",
@@ -495,7 +761,7 @@
         "typing_BinTree.uu___is_Node", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "6fdcb6a73dd778180043916179875d58"
+      "eee7a5dbff7fc64f40153a6d6ccc5d47"
     ],
     [
       "AVL.balanceLL_lemma",
@@ -548,7 +814,7 @@
         "typing_BinTree.make", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "46eb2b7377caf6623775d086596e956f"
+      "8d3023fe2a64e700af543f52410db256"
     ],
     [
       "AVL.balanceLL_lemma2",
@@ -603,7 +869,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "3e3a0663a752f5bf63b2ca1a2e74fbc8"
+      "7cc2dbfecaf4e4950a04c44662bd58f3"
     ],
     [
       "AVL.balanceRR_lemma",
@@ -658,7 +924,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "90af6a71b52cec16d9a258d225abfa50"
+      "4f06f44900fa5c9553a07aa22fccae0c"
     ],
     [
       "AVL.balanceRR_lemma2",
@@ -712,7 +978,7 @@
         "typing_BinTree.make", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "be4e53665ef923d0c2e6856dfcb0b6d7"
+      "eb5bb895e6d26a895f54ea1efaa090a8"
     ],
     [
       "AVL.balanceLR_lemma",
@@ -767,7 +1033,7 @@
         "typing_BinTree.make", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "3ca11dbcdec537c4c64e93b46b32e799"
+      "e209571aacec2904f2fc125965fbf408"
     ],
     [
       "AVL.balanceRL_lemma",
@@ -823,7 +1089,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "a2f1e25a2ba4a0f1349c73579f38f95f"
+      "903202c5a57979cfa8c73099cb1d61c2"
     ],
     [
       "AVL.all_balanceL_lemma",
@@ -873,7 +1139,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "cf338010dff9bbcb23951ef7e4899a5c"
+      "e0334786026aa441b040b0d9a704b544"
     ],
     [
       "AVL.all_balanceR_lemma",
@@ -919,7 +1185,7 @@
         "unit_typing"
       ],
       0,
-      "e3edd5034c4b03f572f936c90badbf01"
+      "1ea71e52bdb809e9be4987624a87b5b5"
     ],
     [
       "AVL.add_lemma",
@@ -928,7 +1194,7 @@
       1,
       [ "@query" ],
       0,
-      "a0cb67f9dabddb17f26d225cc8716df6"
+      "b1fe646b181f999b42d26b500ec34e62"
     ],
     [
       "AVL.add_lemma",
@@ -1021,7 +1287,7 @@
         "typing_FStar.Pervasives.Native.fst", "unit_inversion", "unit_typing"
       ],
       0,
-      "667467daab4880b4302d7775e5a776bb"
+      "83ff34ae1b718fed5569ef88e3991054"
     ],
     [
       "AVL.remove_min_lemma",
@@ -1030,7 +1296,7 @@
       1,
       [ "@query" ],
       0,
-      "f6a2ec789b16767060ae4fa4092d8966"
+      "bf1f89cde87aec7a8419c5c061901055"
     ],
     [
       "AVL.remove_min_lemma",
@@ -1118,7 +1384,7 @@
         "typing_FStar.Pervasives.Native.fst", "unit_inversion", "unit_typing"
       ],
       0,
-      "7296ec3e21bb2f10ffddd2a3ad578a71"
+      "29d944b641ba493029e1203ac581640b"
     ],
     [
       "AVL.remove_max_lemma",
@@ -1127,7 +1393,7 @@
       1,
       [ "@query" ],
       0,
-      "0450fdf95d811519004bf5f5365cf473"
+      "dafe2e139d2dbdb97ec28ebbcdf58a44"
     ],
     [
       "AVL.remove_max_lemma",
@@ -1214,7 +1480,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "6c9467c4cc8e2f162a601b93ea720a52"
+      "5c7d1e22e00599318799febbf42c51f2"
     ],
     [
       "AVL.remove_lemma",
@@ -1303,7 +1569,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "c1fefeba4fda6bfcf4bdea61fd203c0d"
+      "f6003f7bb6bcfae088f8da52343ac7bd"
     ]
   ]
 ]

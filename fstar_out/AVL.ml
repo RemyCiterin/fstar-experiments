@@ -13,6 +13,23 @@ let rec mem :
              | Compare.LT -> mem f x l
              | Compare.GT -> mem f x r
              | Compare.EQ -> true)
+let rec find :
+  'a 'b .
+    'a Compare.comparaison ->
+      'a ->
+        ('a, 'b, unit) BinTree.set ->
+          ('a * 'b) FStar_Pervasives_Native.option
+  =
+  fun f ->
+    fun x ->
+      fun input ->
+        match input with
+        | BinTree.Leaf -> FStar_Pervasives_Native.None
+        | BinTree.Node (l, k, uu___, r) ->
+            (match f x (FStar_Pervasives_Native.fst k) with
+             | Compare.LT -> find f x l
+             | Compare.GT -> find f x r
+             | Compare.EQ -> FStar_Pervasives_Native.Some k)
 let balanceLL :
   'a 'b .
     'a Compare.comparaison ->
@@ -216,6 +233,10 @@ let rec remove :
                       if BinTree.uu___is_Leaf f l
                       then BinTree.make f l k' r'
                       else all_balanceL f l k' r'))
+
+
+
+
 
 
 

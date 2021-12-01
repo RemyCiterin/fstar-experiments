@@ -13,6 +13,13 @@ let rec mem (#a:eqtype) (#b:eqtype) (#f: comparaison a) (x:a) (input: set a b f)
         | GT -> mem x r
         | EQ -> true 
 
+let rec find (#a:eqtype) (#b:eqtype) (#f:comparaison a) (x:a) (input: set a b f) : option (a&b) = 
+    match input with 
+    | Leaf -> None 
+    | Node l k _ r -> match f x (fst k) with 
+        | LT -> find x l 
+        | GT -> find x r 
+        | EQ -> Some k
 
 private let balanceLL (#a:eqtype) (#b:eqtype) (#f: comparaison a) (l: set a b f{Node? l}) (k:a&b) (r:set a b f) : 
     out:set a b f{Node? out /\ Node? (right out) /\ left out == left l}
@@ -144,28 +151,83 @@ let rec remove (#a:eqtype) (#b:eqtype) (#f: comparaison a) (x:a) (input:set a b 
 (* proof *)
 
 #push-options "--z3rlimit 60"
-(*
 let rec mem_lemma (#a:eqtype) (#b:eqtype) (#f: comparaison a) (x:a) (input:set a b f) : 
     Lemma 
         (requires is_avl input)
-        (ensures (member x input <==> mem x input))
+        (ensures (mem x input <==> 
+            (exists y z. member (y, z) input /\ EQ? (f y x))
+        ))
     
     = match input with 
     | Node l k _ r -> begin 
-        match f x k with 
+        match f x (fst k) with
         | LT -> begin 
-            assert (forall y. member y r ==> LT? (f x y));
+            assert (forall y z. member (y, z) r ==> LT? (f x y));
             mem_lemma x l
         end 
         | GT -> begin 
-            assert (forall y. member y l ==> GT? (f x y));
+            assert (forall y z. member (y, z) l ==> GT? (f x y));
             mem_lemma x r
         end 
         | EQ -> ()
     end 
     | Leaf -> ()
-*)
 
+let rec lemma_EQ (#a:eqtype) (#b:eqtype) (#f: comparaison a) (x:a&b) (input:set a b f) : 
+    Lemma 
+        (requires is_avl input)
+        (ensures (
+            member x input ==> (forall y. (EQ? (cmp f x y) /\ member y input) <==> x == y)
+        ))
+    
+    = 
+    match input with 
+    | Node l k _ r -> begin 
+        match cmp f x k with
+        | LT -> begin 
+            assert (forall y. member y r ==> LT? (cmp f x y));
+            lemma_EQ x l
+        end 
+        | GT -> begin 
+            assert (forall y. member y l ==> GT? (cmp f x y));
+            lemma_EQ x r
+        end 
+        | EQ -> begin
+            assert (forall y. member y r ==> LT? (cmp f x y));
+            assert (forall y. member y l ==> GT? (cmp f x y))
+        end 
+    end
+    | Leaf -> ()
+
+
+let rec find_lemma (#a:eqtype) (#b:eqtype) (#f: comparaison a) (x:a) (input:set a b f) : 
+    Lemma 
+        (requires is_avl input)
+        (ensures (
+            match find x input with 
+            | None -> (forall y z. member (y, z) input ==> ~(EQ? (f x y)))
+            | Some (y, z) -> member (y, z) input /\ EQ? (f x y)
+        ))
+    
+    = match input with 
+    | Leaf -> ()
+    | Node l k _ r -> match f x (fst k) with 
+        | LT -> begin
+            assert (forall y z. member (y, z) r ==> LT? (f x y));
+            find_lemma x l 
+        end 
+        | GT -> begin 
+            assert (forall y z. member (y, z) l ==> GT? (f x y));
+            find_lemma x r
+        end  
+        | EQ -> ()
+
+let find_and_mem_lemma (#a:eqtype) (#b:eqtype) (#f: comparaison a) (x:a) (input:set a b f) : 
+    Lemma
+        (requires is_avl input)
+        (ensures (Some? (find x input) <==> mem x input))
+    
+    = find_lemma x input; mem_lemma x input
 
 
 let rec find_min_lemma (#a:eqtype) (#b:eqtype) (#f: comparaison a) (input: set a b f{Node? input}) : 
