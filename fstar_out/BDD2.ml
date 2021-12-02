@@ -42,6 +42,17 @@ let (get_sign : bdd' -> sign) =
 type 'node is_obdd = Obj.t
 type bdd = bdd'
 type node = node'
+let rec (eval_node : (Prims.nat -> Prims.bool) -> node -> Prims.bool) =
+  fun f ->
+    fun node1 ->
+      match node1 with
+      | Leaf (IDENTITY) -> true
+      | Leaf (INVERSE) -> false
+      | Node (IDENTITY, l, v, h) ->
+          if f v then eval_node f h.node else eval_node f l.node
+      | Node (INVERSE, l, v, h) ->
+          Prims.op_Negation
+            (if f v then eval_node f h.node else eval_node f l.node)
 let (compareInt : Prims.int Compare.comparaison) =
   fun x ->
     fun y ->

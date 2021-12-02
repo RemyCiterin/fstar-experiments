@@ -48,6 +48,15 @@ type bdd  = bdd:bdd'  {is_obdd bdd.node}
 (** type for a valid node *)
 type node = node:node'{is_obdd node}
 
+let rec eval_node (f: nat -> bool) (node:node) : bool
+    = match node with 
+    | Leaf IDENTITY -> true
+    | Leaf INVERSE -> false
+    | Node IDENTITY l v h -> 
+        if f v then eval_node f h.node else eval_node f l.node
+    | Node INVERSE  l v h -> 
+        not (if f v then eval_node f h.node else eval_node f l.node)
+
 (** comparaison function for integer *)
 private let compareInt : comparaison int = fun x y -> 
     if x > y then GT else if x < y then LT else EQ 
