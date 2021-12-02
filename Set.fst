@@ -4,7 +4,7 @@ module BT = BinTree
 
 open Compare
 
-let set (a:eqtype) (f: comparaison a) = s:BT.set a unit f{BT.is_avl s}
+type set (a:eqtype) (f: comparaison a) = s:BT.set a unit f{BT.is_avl s}
 
 let mem (#a: eqtype) (#f: comparaison a) (x:a) (input: set a f) : out:bool{out <==> (
         exists y. BT.member (y, ()) input /\ EQ? (f x y)
@@ -40,7 +40,7 @@ let add (#a: eqtype) (#f: comparaison a) (s:set a f) (x:a) : (out:set a f {
 
 
 let remove (#a: eqtype) (#f: comparaison a) (s:set a f) (x:a) : (out:set a f {
-        forall y. member y out <==> (member y out /\ ~(EQ? (f x y)))
+        forall y. member y out <==> (member y s /\ ~(EQ? (f x y)))
     }) = 
     AVL.remove_lemma x s; 
     AVL.remove x s

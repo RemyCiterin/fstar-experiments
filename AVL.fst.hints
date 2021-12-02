@@ -25,7 +25,7 @@
         "subterm_ordering_BinTree.Node", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "ce305f04fdb78e8cff57c80544ad4f60"
+      "14e9ebd27bb40bca0ea50a8aba6e7271"
     ],
     [
       "AVL.find",
@@ -51,7 +51,7 @@
         "subterm_ordering_BinTree.Node", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "28f28758392c51bf263c890fa83813fb"
+      "144451395953591cd482d52ef182403a"
     ],
     [
       "AVL.balanceLL",
@@ -74,7 +74,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "cf8a77c4b2bb0776bcc6368b967c7923"
+      "e7c7a7ecf9927106aae8b8d11cfcf25f"
     ],
     [
       "AVL.balanceRR",
@@ -97,7 +97,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "fe11f23ff82b0fa22cd745e303c987cc"
+      "8e98932448b76cf66528f2599768f870"
     ],
     [
       "AVL.balanceLR",
@@ -120,7 +120,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "ffea6343374e3f022daa4d0d09ae6352"
+      "57c5e668e5d84af2c7d501ea746818cc"
     ],
     [
       "AVL.balanceRL",
@@ -143,7 +143,7 @@
         "typing_BinTree.make"
       ],
       0,
-      "95c86fe2ba758e1e1f72f971e46a1787"
+      "11992858da4b26d0f13974ba174a9b94"
     ],
     [
       "AVL.all_balanceL",
@@ -163,7 +163,7 @@
         "typing_BinTree.right"
       ],
       0,
-      "29de22d46c118ac310c07737b4b0e74e"
+      "8d78ab58192fe62c1f8b1ed1602585a0"
     ],
     [
       "AVL.all_balanceR",
@@ -183,7 +183,7 @@
         "typing_BinTree.right"
       ],
       0,
-      "fbfe137e87a6c26312169191d0b1659c"
+      "cd0d8c4f793470a7ee504da33e88ca70"
     ],
     [
       "AVL.add",
@@ -192,7 +192,7 @@
       1,
       [ "@query" ],
       0,
-      "a69a0d7af56d42a45cab0e319cc17f89"
+      "c3eb6946ce407deaf56d5fdfaaa5b385"
     ],
     [
       "AVL.add",
@@ -247,7 +247,7 @@
         "typing_FStar.Pervasives.Native.fst", "typing_tok_Compare.EQ@tok"
       ],
       0,
-      "ee7dff4e2a88da75088ff54a200cf594"
+      "7bb31ffbb2b66180aab97c82d2a19674"
     ],
     [
       "AVL.find_min",
@@ -272,7 +272,7 @@
         "subterm_ordering_BinTree.Node"
       ],
       0,
-      "c1104c0cd8e26b45aa524dd3bf10d6b8"
+      "3cdcd8c0d6b5564b75dac5b22f9b752f"
     ],
     [
       "AVL.find_max",
@@ -297,7 +297,7 @@
         "subterm_ordering_BinTree.Node"
       ],
       0,
-      "1b3146fb23037fcf619e80b6e74bec33"
+      "c57d7a655c77e0f4d2cbe1b7419dcc50"
     ],
     [
       "AVL.remove_min",
@@ -331,7 +331,7 @@
         "subterm_ordering_BinTree.Node", "typing_BinTree.height"
       ],
       0,
-      "faeb967118907c1a20c01e025555e5b0"
+      "519b553083b1532a6e2de656de95fdab"
     ],
     [
       "AVL.remove_max",
@@ -365,7 +365,7 @@
         "subterm_ordering_BinTree.Node", "typing_BinTree.height"
       ],
       0,
-      "18d267d0dcb99d5866eb394e1a0dd5d9"
+      "cb4dba05c4a09faafb5ea5246f75a91a"
     ],
     [
       "AVL.remove",
@@ -393,7 +393,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "61c8f680bf80bef88d88453b5b3807b6"
+      "1781adc48d357bad1de07d6af870da23"
     ],
     [
       "AVL.mem_lemma",
@@ -460,7 +460,7 @@
         "typing_tok_Compare.LT@tok", "unit_inversion", "unit_typing"
       ],
       0,
-      "fe2068d3c2dbe87db6e41725f7f38a34"
+      "486dd5304fa74ec6bb4cc828a3583d60"
     ],
     [
       "AVL.lemma_EQ",
@@ -520,7 +520,7 @@
         "typing_tok_Compare.LT@tok", "unit_inversion", "unit_typing"
       ],
       0,
-      "680680ee5242bf27009ac696ec9f6483"
+      "6ccf1e965817e4d80ad558dc27e8ce0c"
     ],
     [
       "AVL.find_lemma",
@@ -541,7 +541,7 @@
         "typing_AVL.find"
       ],
       0,
-      "b72755983e88aa1a6b5d7ca7087525fc"
+      "c500c617b00a098d5615ffa3d9eb591f"
     ],
     [
       "AVL.find_lemma",
@@ -614,7 +614,7 @@
         "typing_tok_Compare.LT@tok", "unit_inversion", "unit_typing"
       ],
       0,
-      "b6c45f2b1b48a36b65c4ae8d2b2a5b3e"
+      "d257be44ecef0e413f56ff21070caaeb"
     ],
     [
       "AVL.find_and_mem_lemma",
@@ -633,7 +633,7 @@
         "typing_AVL.find"
       ],
       0,
-      "a7aa6780e9310a06644f6752dc061c4b"
+      "cb707d54fd924d1e38462e54f0158c33"
     ],
     [
       "AVL.find_min_lemma",
@@ -642,7 +642,7 @@
       1,
       [ "@query" ],
       0,
-      "40d41d0d37e21bce1f04496945d12288"
+      "64fd5ebc3feb32b51e08bf3ef018c5ab"
     ],
     [
       "AVL.find_min_lemma",
@@ -700,7 +700,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "ac5c382e884c2652ce877ed69e847c64"
+      "a550729e8d117c318652fff7286183d0"
     ],
     [
       "AVL.find_max_lemma",
@@ -709,7 +709,7 @@
       1,
       [ "@query" ],
       0,
-      "ac2be5325a27e318dad5a71524dff471"
+      "5bdfaac7bb4c2a7e6e610942aafcb2e8"
     ],
     [
       "AVL.find_max_lemma",
@@ -761,7 +761,7 @@
         "typing_BinTree.uu___is_Node", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "eee7a5dbff7fc64f40153a6d6ccc5d47"
+      "7fdf418122880c4621f5f7444bc997a9"
     ],
     [
       "AVL.balanceLL_lemma",
@@ -814,7 +814,7 @@
         "typing_BinTree.make", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "8d3023fe2a64e700af543f52410db256"
+      "4e8c5e6d60f6cc9379ebc928dcede05e"
     ],
     [
       "AVL.balanceLL_lemma2",
@@ -869,7 +869,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "7cc2dbfecaf4e4950a04c44662bd58f3"
+      "80290ceeaf8bbed9e2f8933f0bfece08"
     ],
     [
       "AVL.balanceRR_lemma",
@@ -924,7 +924,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "4f06f44900fa5c9553a07aa22fccae0c"
+      "d441aa80e2eeff740daaf8e137258dd8"
     ],
     [
       "AVL.balanceRR_lemma2",
@@ -978,7 +978,7 @@
         "typing_BinTree.make", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "eb5bb895e6d26a895f54ea1efaa090a8"
+      "dda56c0f45a95bf3fcd50308e9a8b0c9"
     ],
     [
       "AVL.balanceLR_lemma",
@@ -1033,7 +1033,7 @@
         "typing_BinTree.make", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "e209571aacec2904f2fc125965fbf408"
+      "cdf1f676e2225d409b8865494c5e66e9"
     ],
     [
       "AVL.balanceRL_lemma",
@@ -1089,7 +1089,7 @@
         "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "903202c5a57979cfa8c73099cb1d61c2"
+      "82ab743666bfd4d78cc68ecff1b2962b"
     ],
     [
       "AVL.all_balanceL_lemma",
@@ -1139,7 +1139,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "e0334786026aa441b040b0d9a704b544"
+      "db920ff30e7156fe05d0ae1df324d562"
     ],
     [
       "AVL.all_balanceR_lemma",
@@ -1185,7 +1185,7 @@
         "unit_typing"
       ],
       0,
-      "1ea71e52bdb809e9be4987624a87b5b5"
+      "c155c3daef84c2ec014564f2e02feda8"
     ],
     [
       "AVL.add_lemma",
@@ -1194,7 +1194,7 @@
       1,
       [ "@query" ],
       0,
-      "b1fe646b181f999b42d26b500ec34e62"
+      "47e1545726bd1f55821a9e5b890e24d9"
     ],
     [
       "AVL.add_lemma",
@@ -1287,7 +1287,7 @@
         "typing_FStar.Pervasives.Native.fst", "unit_inversion", "unit_typing"
       ],
       0,
-      "83ff34ae1b718fed5569ef88e3991054"
+      "10482ed1f37a1282a394c0d5d7562c74"
     ],
     [
       "AVL.remove_min_lemma",
@@ -1296,7 +1296,7 @@
       1,
       [ "@query" ],
       0,
-      "bf1f89cde87aec7a8419c5c061901055"
+      "13b081e022b0a984d4033aa5cb14f618"
     ],
     [
       "AVL.remove_min_lemma",
@@ -1384,7 +1384,7 @@
         "typing_FStar.Pervasives.Native.fst", "unit_inversion", "unit_typing"
       ],
       0,
-      "29d944b641ba493029e1203ac581640b"
+      "1686e1f97cf2c3f8fe24facdcfdc3127"
     ],
     [
       "AVL.remove_max_lemma",
@@ -1393,7 +1393,7 @@
       1,
       [ "@query" ],
       0,
-      "dafe2e139d2dbdb97ec28ebbcdf58a44"
+      "819c8084e0197417f247aeb92217e007"
     ],
     [
       "AVL.remove_max_lemma",
@@ -1480,7 +1480,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "5c7d1e22e00599318799febbf42c51f2"
+      "6af8b2910a3ec878da013217caf9eae9"
     ],
     [
       "AVL.remove_lemma",
@@ -1569,7 +1569,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "f6003f7bb6bcfae088f8da52343ac7bd"
+      "5e982b8193178860fb88f474a0cc2e25"
     ]
   ]
 ]
