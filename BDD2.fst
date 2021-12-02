@@ -37,7 +37,7 @@ let get_sign (bdd: bdd'{Node? bdd.node}) = match bdd.node with
 let rec is_obdd (node:node') : prop = 
     match node with
     | Leaf s -> true 
-    | Node s l v h -> 
+    | Node s l v h -> l =!= h /\ 
         (Leaf? l.node || get_var l < v) /\ 
         (Leaf? h.node || get_var h < v) /\ 
         is_obdd l.node /\ is_obdd h.node
