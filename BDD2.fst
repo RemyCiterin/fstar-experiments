@@ -135,21 +135,21 @@ let contain_lemma1 (table:global_table) (node:node) :
         (requires compatible_node table node) 
 
         (ensures (
-            match M.find node table.map with 
+            match M.find node table.map with
             | Some (n, b) -> n == node /\ b.node == node
             | None -> true
         ))
     
-    = match M.find node table.map with 
+    = match M.find node table.map with
     | None -> ()
 
-    | Some (n, b) -> 
+    | Some (n, b) ->
     begin
         assert (EQ? (compareNode n node));
 
-        match node with 
+        match node with
         | Leaf s -> ()
-        | Node s l v h -> begin 
+        | Node s l v h -> begin
             assert (M.member l.node l table.map);
             assert (M.member h.node h table.map);
 
@@ -159,11 +159,11 @@ let contain_lemma1 (table:global_table) (node:node) :
             assert ((get_low  b).tag == l.tag);
             assert ((get_high b).tag == h.tag);
             assert (get_var b == v)
-        end 
-    end 
+        end
+    end
 
-let contain_lemma2 (table:global_table) (node:node) : 
-    Lemma 
+let contain_lemma2 (table:global_table) (node:node) :
+    Lemma
         (requires compatible_node table node)
 
         (ensures (
