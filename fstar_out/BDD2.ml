@@ -42,30 +42,39 @@ let (get_sign : bdd' -> sign) =
 type 'node is_obdd = Obj.t
 type bdd = bdd'
 type node = node'
-type hash_type =
-  (Prims.bool * Prims.bool * Prims.nat * Prims.nat * Prims.nat)
-let (node_hash : node -> hash_type) =
-  fun node1 ->
-    match node1 with
-    | Node (INVERSE, l, v, h) -> (true, true, (l.tag), v, (h.tag))
-    | Node (IDENTITY, l, v, h) -> (true, false, (l.tag), v, (h.tag))
-    | Leaf (INVERSE) ->
-        (false, true, Prims.int_zero, Prims.int_zero, Prims.int_zero)
-    | Leaf (IDENTITY) ->
-        (false, false, Prims.int_zero, Prims.int_zero, Prims.int_zero)
-type global_table = {
-  map: (hash_type, bdd) FStar_Map.t ;
+let (compareInt : Prims.int Compare.comparaison) =
+  fun x ->
+    fun y ->
+      if x > y then Compare.GT else if x < y then Compare.LT else Compare.EQ
+let (compareNode : node Compare.comparaison) =
+  fun l ->
+    fun h ->
+      match (l, h) with
+      | (Node (ls, ll, lv, lh), Node (hs, hl, hv, hh)) ->
+          (match (ls, hs) with
+           | (IDENTITY, INVERSE) -> Compare.LT
+           | (INVERSE, IDENTITY) -> Compare.GT
+           | (uu___, uu___1) ->
+               (match compareInt ll.tag hl.tag with
+                | Compare.EQ ->
+                    (match compareInt lh.tag hh.tag with
+                     | Compare.EQ -> compareInt lv hv
+                     | x -> x)
+                | x -> x))
+      | (Leaf ls, Leaf hs) ->
+          (match (ls, hs) with
+           | (IDENTITY, INVERSE) -> Compare.LT
+           | (INVERSE, IDENTITY) -> Compare.GT
+           | (uu___, uu___1) -> Compare.EQ)
+      | (Leaf ls, uu___) -> Compare.GT
+      | (uu___, Leaf hs) -> Compare.LT
+type global_table' = {
+  map: (node, bdd, unit) Map.map ;
   size: Prims.nat }
-let (__proj__Mkglobal_table__item__map :
-  global_table -> (hash_type, bdd) FStar_Map.t) =
+let (__proj__Mkglobal_table'__item__map :
+  global_table' -> (node, bdd, unit) Map.map) =
   fun projectee -> match projectee with | { map; size;_} -> map
-let (__proj__Mkglobal_table__item__size : global_table -> Prims.nat) =
+let (__proj__Mkglobal_table'__item__size : global_table' -> Prims.nat) =
   fun projectee -> match projectee with | { map; size;_} -> size
-type 'table is_correct_table = unit
-type valid_table = global_table
-type ('table, 'bdd1) contains_prop = unit
-type ('table, 'node1) is_compatible_node = Obj.t
-
-
-let (inv : sign -> sign) =
-  fun sign1 -> match sign1 with | INVERSE -> IDENTITY | IDENTITY -> INVERSE
+type 'table is_valid_table = unit
+type global_table = global_table'

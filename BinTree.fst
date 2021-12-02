@@ -6,7 +6,7 @@ open Compare
 
 let cmp (#a:eqtype) (#b:eqtype) (f: comparaison a) (x:a&b) (y:a&b) : ordering = f (fst x) (fst y)
 
-noeq
+
 type set (a: eqtype) (b: eqtype) (compare: comparaison a) = 
     | Node : set a b compare -> (a&b) -> nat -> set a b compare -> set a b compare
     | Leaf : set a b compare

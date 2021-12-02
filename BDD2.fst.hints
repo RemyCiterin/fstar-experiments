@@ -1,0 +1,383 @@
+[
+  "Æ’É–àŠµsú\"‘ŒëÈîB",
+  [
+    [
+      "BDD2.bdd'",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.eqtype",
+        "equation_Prims.nat", "function_token_typing_Prims.int",
+        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "kinding_BDD2.bdd_@tok", "kinding_BDD2.node_@tok",
+        "kinding_BDD2.sign@tok",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
+      ],
+      0,
+      "c785aada07c8497f6149459d851a6729"
+    ],
+    [
+      "BDD2.__proj__Leaf__item___0",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_b15b20bd554b6a994a9d4dbd4982d987"
+      ],
+      0,
+      "6c0407433351f162a49da53bc17099fb"
+    ],
+    [
+      "BDD2.__proj__Node__item___0",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_f2fd96971cf139505dc357ed103e1b36"
+      ],
+      0,
+      "17ee5d5332d02179c83ec453b6551fc3"
+    ],
+    [
+      "BDD2.__proj__Node__item___1",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_f2fd96971cf139505dc357ed103e1b36"
+      ],
+      0,
+      "0b29f48e596d35f5716637fa519a13b5"
+    ],
+    [
+      "BDD2.__proj__Node__item___2",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_f2fd96971cf139505dc357ed103e1b36"
+      ],
+      0,
+      "48ca897c5016693c3f1c0a0aab6313c0"
+    ],
+    [
+      "BDD2.__proj__Node__item___3",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_f2fd96971cf139505dc357ed103e1b36"
+      ],
+      0,
+      "52f336b82b7189fc90ee756f4f2ffb1b"
+    ],
+    [
+      "BDD2.get_low",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_e3c6f569cc8129ff4b3ff01c63ee7b02"
+      ],
+      0,
+      "c7320166e2cccb88091a8c6d06f8811a"
+    ],
+    [
+      "BDD2.get_high",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_e3c6f569cc8129ff4b3ff01c63ee7b02"
+      ],
+      0,
+      "0f1b6218c8b8d78bae983bed0a6e30b8"
+    ],
+    [
+      "BDD2.get_var",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_e3c6f569cc8129ff4b3ff01c63ee7b02"
+      ],
+      0,
+      "26b6f3d1e182c17c4054cb2ea920dd0e"
+    ],
+    [
+      "BDD2.get_sign",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_e3c6f569cc8129ff4b3ff01c63ee7b02"
+      ],
+      0,
+      "e41d4df6f0d3773fe1ec6b60a4b21bc0"
+    ],
+    [
+      "BDD2.is_obdd",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "BDD2_pretyping_ac9521acb2148b392c7c5e5251ec3d7f",
+        "Prims_pretyping_0da546199211a769a972571cdb3aec67",
+        "binder_x_ac9521acb2148b392c7c5e5251ec3d7f_0",
+        "disc_equation_BDD2.Leaf", "disc_equation_BDD2.Node",
+        "equality_tok_Prims.T@tok", "equation_Prims.l_True",
+        "equation_Prims.l_and", "equation_Prims.squash",
+        "equation_Prims.subtype_of", "fuel_guarded_inversion_BDD2.bdd_",
+        "fuel_guarded_inversion_BDD2.node_",
+        "l_quant_interp_5b2993f9f2c0eba3627049a3b4167c7a",
+        "proj_equation_BDD2.Mkbdd__node",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "subterm_ordering_BDD2.Mkbdd_", "subterm_ordering_BDD2.Node",
+        "typing_BDD2.__proj__Mkbdd___item__node", "typing_tok_Prims.T@tok"
+      ],
+      0,
+      "a6a25f333d621ed24299857c889237a4"
+    ],
+    [
+      "BDD2.compareInt",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "BDD2_interpretation_Tm_arrow_22174b71e4b01ba7b9da18564e594b68",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "Prims_pretyping_ae567c2fb75be05905677af440075565", "bool_inversion",
+        "constructor_distinct_Compare.EQ", "constructor_distinct_Compare.GT",
+        "constructor_distinct_Compare.LT", "disc_equation_Compare.EQ",
+        "disc_equation_Compare.GT", "disc_equation_Compare.LT",
+        "equality_tok_Compare.EQ@tok", "equality_tok_Compare.GT@tok",
+        "equality_tok_Compare.LT@tok", "equation_Compare.anti_symetry",
+        "equation_Compare.reflexivity", "equation_Compare.symmetry_EQ",
+        "equation_Compare.transitivity", "equation_Compare.transitivity_EQ",
+        "equation_Compare.transitivity_GT",
+        "equation_Compare.transitivity_LT",
+        "fuel_guarded_inversion_Compare.ordering",
+        "function_token_typing_Prims.__cache_version_number__",
+        "int_inversion",
+        "interpretation_Tm_abs_1815b1cdabf82feeaae4aa631ee8cbc2",
+        "primitive_Prims.op_GreaterThan", "primitive_Prims.op_LessThan",
+        "projection_inverse_BoxBool_proj_0", "typing_Compare.uu___is_EQ",
+        "typing_Compare.uu___is_GT", "typing_Compare.uu___is_LT",
+        "typing_Tm_abs_1815b1cdabf82feeaae4aa631ee8cbc2"
+      ],
+      0,
+      "0054e9e7fcc769b23ad1e02803c8223c"
+    ],
+    [
+      "BDD2.compareNode",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_BDD2.is_obdd.fuel_instrumented", "@query",
+        "b2t_def", "disc_equation_BDD2.Leaf", "disc_equation_BDD2.Node",
+        "equation_BDD2.node",
+        "equation_with_fuel_BDD2.is_obdd.fuel_instrumented",
+        "fuel_guarded_inversion_BDD2.node_", "l_and-interp",
+        "primitive_Prims.op_BarBar",
+        "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
+        "proj_equation_FStar.Pervasives.Native.Mktuple2__2",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
+        "refinement_interpretation_Tm_refine_46aac0b86d56a6dabd82d64b198fb9cd"
+      ],
+      0,
+      "846ef6df42e0b4153413eb1e835380e3"
+    ],
+    [
+      "BDD2.compareNode",
+      2,
+      2,
+      2,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "BDD2_interpretation_Tm_arrow_20de86eb51349b7eb75753e1f8f567da",
+        "BDD2_pretyping_4773efaba4a7a232f2fe2ce8850736df",
+        "BDD2_pretyping_ac9521acb2148b392c7c5e5251ec3d7f",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "Compare_pretyping_070c814c0f4b50b84844b5a29f13d1c0",
+        "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "Prims_pretyping_f8666440faa91836cc5a13998af863fc", "bool_inversion",
+        "constructor_distinct_BDD2.IDENTITY",
+        "constructor_distinct_BDD2.INVERSE",
+        "constructor_distinct_Compare.EQ", "constructor_distinct_Compare.GT",
+        "constructor_distinct_Compare.LT",
+        "constructor_distinct_Compare.ordering",
+        "constructor_distinct_Prims.unit", "constructor_distinct_Tm_unit",
+        "data_elim_BDD2.Leaf", "data_elim_BDD2.Mkbdd_",
+        "data_elim_BDD2.Node", "data_typing_intro_BDD2.IDENTITY@tok",
+        "disc_equation_Compare.EQ", "disc_equation_Compare.GT",
+        "disc_equation_Compare.LT", "equality_tok_Compare.EQ@tok",
+        "equality_tok_Compare.GT@tok", "equality_tok_Compare.LT@tok",
+        "equation_BDD2.compareInt", "equation_BDD2.node",
+        "equation_Compare.anti_symetry", "equation_Compare.comparaison",
+        "equation_Compare.reflexivity", "equation_Compare.symmetry_EQ",
+        "equation_Compare.transitivity", "equation_Compare.transitivity_EQ",
+        "equation_Compare.transitivity_GT",
+        "equation_Compare.transitivity_LT", "equation_Prims.nat",
+        "fuel_guarded_inversion_BDD2.bdd_",
+        "fuel_guarded_inversion_BDD2.node_",
+        "fuel_guarded_inversion_BDD2.sign",
+        "fuel_guarded_inversion_Compare.ordering",
+        "function_token_typing_Prims.__cache_version_number__",
+        "int_inversion", "int_typing",
+        "interpretation_Tm_abs_6696e08c30f7d112e7d415791173d408",
+        "primitive_Prims.op_GreaterThan", "primitive_Prims.op_LessThan",
+        "proj_equation_BDD2.Mkbdd__node", "proj_equation_BDD2.Mkbdd__tag",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
+        "refinement_interpretation_Tm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "typing_BDD2.compareInt", "typing_Compare.uu___is_EQ",
+        "typing_Compare.uu___is_GT", "typing_Compare.uu___is_LT",
+        "typing_Tm_abs_6696e08c30f7d112e7d415791173d408", "unit_typing"
+      ],
+      0,
+      "b08f90146131f761a841259572f360d7"
+    ],
+    [
+      "BDD2.global_table'",
+      1,
+      2,
+      1,
+      [
+        "@query", "assumption_BDD2.bdd___uu___haseq",
+        "assumption_BDD2.node___uu___haseq", "equation_BDD2.bdd",
+        "equation_BDD2.node",
+        "haseqTm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "haseqTm_refine_7debc8526c1742a453863eb8081f1d54"
+      ],
+      0,
+      "9e21d8ec50e24aee374f2fbb7665aa99"
+    ],
+    [
+      "BDD2.global_table'",
+      2,
+      2,
+      1,
+      [
+        "@query", "assumption_BDD2.bdd___uu___haseq",
+        "assumption_BDD2.node___uu___haseq", "equation_BDD2.bdd",
+        "equation_BDD2.node",
+        "haseqTm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "haseqTm_refine_7debc8526c1742a453863eb8081f1d54"
+      ],
+      0,
+      "9f74245cef7fc7e2896ccb649ea36b46"
+    ],
+    [
+      "BDD2.global_table'",
+      3,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "assumption_BDD2.bdd___uu___haseq",
+        "assumption_BDD2.node___uu___haseq",
+        "assumption_BinTree.set__uu___haseq", "equation_BDD2.bdd",
+        "equation_BDD2.node", "equation_Map.map", "equation_Prims.eqtype",
+        "equation_Prims.nat", "function_token_typing_Prims.int",
+        "haseqTm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "haseqTm_refine_713b4e3e6b6d19e752255dafb694f63a",
+        "haseqTm_refine_7debc8526c1742a453863eb8081f1d54",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_kinding_Tm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "refinement_kinding_Tm_refine_7debc8526c1742a453863eb8081f1d54",
+        "typing_BDD2.compareNode"
+      ],
+      0,
+      "18d3e6143cdce0febc57db01bb315439"
+    ],
+    [
+      "BDD2.__proj__Mkglobal_table'__item__map",
+      1,
+      2,
+      1,
+      [
+        "@query", "assumption_BDD2.bdd___uu___haseq",
+        "assumption_BDD2.node___uu___haseq", "equation_BDD2.bdd",
+        "equation_BDD2.node",
+        "haseqTm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "haseqTm_refine_7debc8526c1742a453863eb8081f1d54"
+      ],
+      0,
+      "675ad86197ab813aaf6d753067445e25"
+    ],
+    [
+      "BDD2.__proj__Mkglobal_table'__item__map",
+      2,
+      2,
+      1,
+      [
+        "@query", "assumption_BDD2.bdd___uu___haseq",
+        "assumption_BDD2.node___uu___haseq", "equation_BDD2.bdd",
+        "equation_BDD2.node",
+        "haseqTm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "haseqTm_refine_7debc8526c1742a453863eb8081f1d54"
+      ],
+      0,
+      "3fdbf9735847170b1254de0ed2146f61"
+    ],
+    [
+      "BDD2.is_valid_table",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_BDD2.is_obdd.fuel_instrumented",
+        "@fuel_irrelevance_BDD2.is_obdd.fuel_instrumented", "@query",
+        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
+        "assumption_BDD2.bdd___uu___haseq",
+        "assumption_BDD2.node___uu___haseq", "bool_inversion",
+        "disc_equation_BDD2.Leaf", "disc_equation_BDD2.Node",
+        "disc_equation_Compare.EQ", "equation_BDD2.bdd",
+        "equation_BDD2.get_high", "equation_BDD2.get_low",
+        "equation_BDD2.node", "equation_Compare.comparaison",
+        "equation_Compare.reflexivity", "equation_Prims.eqtype",
+        "equation_Prims.l_Forall", "equation_Prims.nat",
+        "equation_Prims.squash", "equation_Prims.subtype_of",
+        "equation_with_fuel_BDD2.is_obdd.fuel_instrumented",
+        "fuel_guarded_inversion_BDD2.bdd_",
+        "fuel_guarded_inversion_BDD2.node_",
+        "function_token_typing_Prims.int",
+        "haseqTm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "haseqTm_refine_7debc8526c1742a453863eb8081f1d54", "l_and-interp",
+        "l_quant_interp_5b2993f9f2c0eba3627049a3b4167c7a",
+        "proj_equation_BDD2.Mkbdd__node",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_46aac0b86d56a6dabd82d64b198fb9cd",
+        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
+        "refinement_interpretation_Tm_refine_7debc8526c1742a453863eb8081f1d54",
+        "typing_BDD2.compareNode", "typing_Compare.uu___is_EQ"
+      ],
+      0,
+      "65d4a13685e13c4bd3d6601e88886f1f"
+    ]
+  ]
+]
