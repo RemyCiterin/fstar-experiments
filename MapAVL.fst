@@ -1,4 +1,4 @@
-module Map 
+module MapAVL
 
 open Compare 
 

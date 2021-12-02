@@ -1,4 +1,4 @@
-module Set 
+module SetAVL
 
 module BT = BinTree
 

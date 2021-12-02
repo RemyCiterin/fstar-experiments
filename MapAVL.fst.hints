@@ -1,22 +1,22 @@
 [
-  "‡Qê9ñEz]\u0014•h«0\u001b_‡",
+  "ãÕ=57\u0005~D\bD\u0002€?2Îß",
   [
     [
-      "Map.mem",
+      "MapAVL.mem",
       1,
       2,
       1,
       [
         "@MaxIFuel_assumption", "@query", "equation_Compare.comparaison",
-        "equation_Compare.symmetry_EQ", "equation_Map.map",
+        "equation_Compare.symmetry_EQ", "equation_MapAVL.map",
         "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
         "refinement_interpretation_Tm_refine_713b4e3e6b6d19e752255dafb694f63a"
       ],
       0,
-      "833b7096c9a08a04cde389dcc8556a58"
+      "457441e3ce731396d1775492e6ae7907"
     ],
     [
-      "Map.member_key",
+      "MapAVL.member_key",
       1,
       2,
       1,
@@ -27,7 +27,7 @@
         "data_elim_FStar.Pervasives.Native.Some", "disc_equation_Compare.EQ",
         "equation_BinTree.cmp", "equation_Compare.comparaison",
         "equation_Compare.reflexivity",
-        "equation_FStar.Pervasives.Native.fst", "equation_Map.map",
+        "equation_FStar.Pervasives.Native.fst", "equation_MapAVL.map",
         "equation_Prims.eqtype",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
         "kinding_FStar.Pervasives.Native.tuple2@tok",
@@ -43,10 +43,10 @@
         "typing_AVL.find"
       ],
       0,
-      "d3aa89d9ae2aad87ad5b095625df17f8"
+      "9a0aaf9d9e3712179f8778f1bac51516"
     ],
     [
-      "Map.member",
+      "MapAVL.member",
       1,
       2,
       1,
@@ -58,7 +58,7 @@
         "data_elim_FStar.Pervasives.Native.Some", "disc_equation_Compare.EQ",
         "equation_BinTree.cmp", "equation_Compare.comparaison",
         "equation_Compare.reflexivity",
-        "equation_FStar.Pervasives.Native.fst", "equation_Map.map",
+        "equation_FStar.Pervasives.Native.fst", "equation_MapAVL.map",
         "equation_Prims.eqtype",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
         "kinding_FStar.Pervasives.Native.tuple2@tok",
@@ -73,18 +73,19 @@
         "typing_AVL.find"
       ],
       0,
-      "13f498b0fd18f47a2dbd311cadf90aa8"
+      "7661aa0b6c547137c2e4ad5685671f57"
     ],
     [
-      "Map.find",
+      "MapAVL.find",
       1,
       2,
       1,
       [
         "@MaxIFuel_assumption", "@query",
         "data_elim_FStar.Pervasives.Native.Mktuple2",
-        "data_elim_FStar.Pervasives.Native.Some", "equation_Map.map",
-        "equation_Map.mem", "equation_Map.member", "equation_Prims.eqtype",
+        "data_elim_FStar.Pervasives.Native.Some", "equation_MapAVL.map",
+        "equation_MapAVL.mem", "equation_MapAVL.member",
+        "equation_Prims.eqtype",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
         "kinding_FStar.Pervasives.Native.tuple2@tok",
         "lemma_FStar.Pervasives.invertOption",
@@ -92,13 +93,13 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_549266a6e061d9af5c39e0afc4ddffb3",
         "refinement_interpretation_Tm_refine_713b4e3e6b6d19e752255dafb694f63a",
-        "typing_AVL.find", "typing_Map.mem", "typing_Map.member"
+        "typing_AVL.find", "typing_MapAVL.mem", "typing_MapAVL.member"
       ],
       0,
-      "5dad8b7ea007a536eeafe52d728a271c"
+      "f0d5ccc30b50c3a4f5c42a7868af09ae"
     ],
     [
-      "Map.add",
+      "MapAVL.add",
       1,
       2,
       1,
@@ -110,8 +111,8 @@
         "data_elim_BinTree.Node",
         "data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok",
         "disc_equation_BinTree.Node", "equation_BinTree.cmp",
-        "equation_FStar.Pervasives.Native.fst", "equation_Map.map",
-        "equation_Map.member", "equation_Prims.eqtype",
+        "equation_FStar.Pervasives.Native.fst", "equation_MapAVL.map",
+        "equation_MapAVL.member", "equation_Prims.eqtype",
         "equation_with_fuel_BinTree.member.fuel_instrumented",
         "false_interp", "fuel_guarded_inversion_BinTree.set",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
@@ -122,13 +123,13 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_713b4e3e6b6d19e752255dafb694f63a",
         "refinement_interpretation_Tm_refine_b5f2bf4d0cfc44ac328dff14f1523f7b",
-        "typing_AVL.add", "typing_Map.member"
+        "typing_AVL.add", "typing_MapAVL.member"
       ],
       0,
-      "5cdfa6ab489a1ffada674a225f41d232"
+      "1cec9bb80aa096df75c02ecb8f57d73a"
     ],
     [
-      "Map.remove",
+      "MapAVL.remove",
       1,
       2,
       1,
@@ -139,7 +140,8 @@
         "data_elim_BinTree.Node",
         "data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok",
         "disc_equation_Compare.EQ", "equation_FStar.Pervasives.Native.fst",
-        "equation_Map.map", "equation_Map.member", "equation_Prims.eqtype",
+        "equation_MapAVL.map", "equation_MapAVL.member",
+        "equation_Prims.eqtype",
         "equation_with_fuel_AVL.remove.fuel_instrumented",
         "equation_with_fuel_BinTree.member.fuel_instrumented",
         "false_interp", "fuel_guarded_inversion_BinTree.set",
@@ -151,10 +153,10 @@
         "refinement_interpretation_Tm_refine_713b4e3e6b6d19e752255dafb694f63a",
         "token_correspondence_AVL.remove.fuel_instrumented",
         "typing_FStar.Pervasives.Native.__proj__Mktuple2__item___1",
-        "typing_Map.member"
+        "typing_MapAVL.member"
       ],
       0,
-      "835e6ba8ac20a71d4038008528a38f25"
+      "9b7dd4fed1bb2e31a9c4b526a0b6fc25"
     ]
   ]
 ]

@@ -1,6 +1,23 @@
 [
-  "›åÃ¡2ˆûKÅ[$Î˘®3p",
+  "–ÚE±¥›J¨‚\u0017˚a≤˝%≥",
   [
+    [
+      "BinTree.set",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Prims.nat",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "function_token_typing_Prims.int",
+        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
+      ],
+      0,
+      "68043b6c6ddc62f4bd088e6068562b19"
+    ],
     [
       "BinTree.__proj__Node__item___0",
       1,
@@ -11,7 +28,7 @@
         "refinement_interpretation_Tm_refine_ab79f7d536444818cb251a514e240d97"
       ],
       0,
-      "b89a23e430a625e2b4ff50141fc5c2a2"
+      "39ef23cd9388204d8cb03f139f811012"
     ],
     [
       "BinTree.__proj__Node__item___1",
@@ -23,7 +40,7 @@
         "refinement_interpretation_Tm_refine_ab79f7d536444818cb251a514e240d97"
       ],
       0,
-      "6efcc80b2351d32d53ca4b4dc2142d17"
+      "1a457f1b3265f4214b45c46d13a49672"
     ],
     [
       "BinTree.__proj__Node__item___2",
@@ -35,7 +52,7 @@
         "refinement_interpretation_Tm_refine_ab79f7d536444818cb251a514e240d97"
       ],
       0,
-      "58a54722b7f0d6127e3e6a073c7a3ee4"
+      "43824cf9dd37bdb65b0d8f96317d50e6"
     ],
     [
       "BinTree.__proj__Node__item___3",
@@ -47,7 +64,7 @@
         "refinement_interpretation_Tm_refine_ab79f7d536444818cb251a514e240d97"
       ],
       0,
-      "e5eb8bbf15100fa93ca7455621d76e3a"
+      "a2890df427f2c8b5060d9761276be112"
     ],
     [
       "BinTree.height",
@@ -60,7 +77,7 @@
         "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "b45717980bd35fcf7297a475b1d997eb"
+      "4f7a229f13ca326f0a5e7edac6409aa5"
     ],
     [
       "BinTree.key",
@@ -72,7 +89,7 @@
         "refinement_interpretation_Tm_refine_ab79f7d536444818cb251a514e240d97"
       ],
       0,
-      "b0a5a95ed5b1d9d043e994649b5511a1"
+      "249814ebf4be0e10fb0facb56de3daa4"
     ],
     [
       "BinTree.left",
@@ -84,7 +101,7 @@
         "refinement_interpretation_Tm_refine_ab79f7d536444818cb251a514e240d97"
       ],
       0,
-      "029792b641426b79ff2f598dcba12e17"
+      "295442e2f38dbefa315b9f5e86a6da49"
     ],
     [
       "BinTree.right",
@@ -96,7 +113,7 @@
         "refinement_interpretation_Tm_refine_ab79f7d536444818cb251a514e240d97"
       ],
       0,
-      "733570d4c5249916d0f2075444b35916"
+      "5824c17f365e4376496c010bc70848a0"
     ],
     [
       "BinTree.member",
@@ -118,7 +135,7 @@
         "subterm_ordering_BinTree.Node"
       ],
       0,
-      "70126286afe69f75b628fae0edc21a32"
+      "a90f918bb9a45179693c5b82caadb262"
     ],
     [
       "BinTree.delta",
@@ -139,7 +156,7 @@
         "typing_BinTree.uu___is_EQ"
       ],
       0,
-      "c81e375b1c06beaa965161a900a70ee7"
+      "37cfca972349c734dc2efb44481a13a3"
     ],
     [
       "BinTree.is_avl",
@@ -161,7 +178,7 @@
         "subterm_ordering_BinTree.Node", "typing_tok_Prims.T@tok"
       ],
       0,
-      "6a27684012ff6ceede9204b615c0d0c1"
+      "671e901d372da5f199b03b6ee1630ff2"
     ],
     [
       "BinTree.make",
@@ -189,7 +206,7 @@
         "typing_BinTree.height"
       ],
       0,
-      "8e4811201472cff3e00bc313c0b748ef"
+      "7b0a82d154f7ff8335165228614e3e64"
     ],
     [
       "BinTree.make_lemma",
@@ -234,7 +251,7 @@
         "typing_BinTree.make", "typing_FStar.Pervasives.Native.fst"
       ],
       0,
-      "9ab8e7d3057a75e363be400724db8d5b"
+      "64cd708dbaf9e0e208c7b3d2a6b859c5"
     ]
   ]
 ]

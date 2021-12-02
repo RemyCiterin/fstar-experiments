@@ -1,8 +1,8 @@
 module BDD2 
 
 open Compare 
-module M = Map 
-module S = Set 
+module M = MapAVL
+module S = SetAVL 
 
 (** type of typed bdd and it's tag for memoization *)
 type bdd': eqtype = {tag: nat; node: node'}

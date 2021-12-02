@@ -1,23 +1,23 @@
 [
-  "ŸÝ\u001f \txpHýJ\u001e¨¹°b“",
+  "èÓ^È´\u0001\u0011e)?³uéx/\r",
   [
     [
-      "Set.mem",
+      "SetAVL.mem",
       1,
       2,
       1,
       [
         "@MaxIFuel_assumption", "@query", "equation_Compare.comparaison",
-        "equation_Compare.symmetry_EQ", "equation_Set.set",
+        "equation_Compare.symmetry_EQ", "equation_SetAVL.set",
         "refinement_interpretation_Tm_refine_55403de6503aa05f327d8eb577d7bd1b",
         "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
         "unit_inversion", "unit_typing"
       ],
       0,
-      "d9e930b243dea383b56bcc3a1cededd8"
+      "21c0f562f55b82afa59d316d8d57eba1"
     ],
     [
-      "Set.member",
+      "SetAVL.member",
       1,
       2,
       1,
@@ -31,7 +31,7 @@
         "equation_Compare.reflexivity",
         "equation_FStar.Pervasives.Native.fst",
         "equation_FStar.Pervasives.pattern", "equation_Prims.eqtype",
-        "equation_Set.set",
+        "equation_SetAVL.set",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
         "function_token_typing_FStar.Pervasives.pattern",
         "function_token_typing_Prims.unit",
@@ -48,10 +48,10 @@
         "typing_AVL.find", "unit_inversion", "unit_typing"
       ],
       0,
-      "4bfcbf242fcfe5b53ccf46fa83d54244"
+      "75f8d1046c804485cfe73546a8a263b2"
     ],
     [
-      "Set.find",
+      "SetAVL.find",
       1,
       2,
       1,
@@ -61,8 +61,9 @@
         "constructor_distinct_FStar.Pervasives.Native.Some",
         "disc_equation_FStar.Pervasives.Native.None",
         "disc_equation_FStar.Pervasives.Native.Some",
-        "equation_Prims.eqtype", "equation_Set.mem", "equation_Set.member",
-        "equation_Set.set", "lemma_FStar.Pervasives.invertOption",
+        "equation_Prims.eqtype", "equation_SetAVL.mem",
+        "equation_SetAVL.member", "equation_SetAVL.set",
+        "lemma_FStar.Pervasives.invertOption",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
@@ -72,14 +73,14 @@
         "refinement_interpretation_Tm_refine_4f35c557bb8e260f6835273ba1d33437",
         "refinement_interpretation_Tm_refine_55403de6503aa05f327d8eb577d7bd1b",
         "refinement_interpretation_Tm_refine_81a936d0cc9a7a3e6654265e05041b76",
-        "typing_Set.mem", "typing_Set.member", "unit_inversion",
+        "typing_SetAVL.mem", "typing_SetAVL.member", "unit_inversion",
         "unit_typing"
       ],
       0,
-      "c323867f7673de7e9df3e565201d1436"
+      "4191ac9d89e0f0e768ef0f9cab05f920"
     ],
     [
-      "Set.add",
+      "SetAVL.add",
       1,
       2,
       1,
@@ -92,7 +93,7 @@
         "disc_equation_BinTree.Node", "equation_BinTree.cmp",
         "equation_FStar.Pervasives.Native.fst",
         "equation_FStar.Pervasives.pattern", "equation_Prims.eqtype",
-        "equation_Set.member", "equation_Set.set",
+        "equation_SetAVL.member", "equation_SetAVL.set",
         "equation_with_fuel_BinTree.member.fuel_instrumented",
         "false_interp", "fuel_guarded_inversion_BinTree.set",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
@@ -105,49 +106,42 @@
         "refinement_interpretation_Tm_refine_4f35c557bb8e260f6835273ba1d33437",
         "refinement_interpretation_Tm_refine_55403de6503aa05f327d8eb577d7bd1b",
         "refinement_interpretation_Tm_refine_b5f2bf4d0cfc44ac328dff14f1523f7b",
-        "typing_AVL.add", "typing_Set.member", "unit_typing"
+        "typing_AVL.add", "typing_SetAVL.member", "unit_typing"
       ],
       0,
-      "78a3203a4a6fd39f2df795edefe7b07c"
+      "97253dadea964ae4ebbdff7c853cb8a4"
     ],
     [
-      "Set.remove",
+      "SetAVL.remove",
       1,
       2,
       1,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_AVL.find.fuel_instrumented",
-        "@fuel_correspondence_AVL.remove.fuel_instrumented", "@query",
-        "Compare_interpretation_Tm_arrow_933b3e1bf18e4c22dfe73bbda5b59475",
-        "bool_inversion",
-        "constructor_distinct_FStar.Pervasives.Native.None",
+        "@fuel_correspondence_AVL.remove.fuel_instrumented",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented", "@query",
         "data_elim_BinTree.Node",
         "data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok",
-        "disc_equation_Compare.EQ", "equation_Compare.comparaison",
-        "equation_Compare.reflexivity",
-        "equation_FStar.Pervasives.Native.fst",
+        "disc_equation_Compare.EQ", "equation_FStar.Pervasives.Native.fst",
         "equation_FStar.Pervasives.pattern", "equation_Prims.eqtype",
-        "equation_Set.member", "equation_Set.set",
-        "equation_with_fuel_AVL.find.fuel_instrumented",
+        "equation_SetAVL.member", "equation_SetAVL.set",
         "equation_with_fuel_AVL.remove.fuel_instrumented",
-        "fuel_guarded_inversion_BinTree.set",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "false_interp", "fuel_guarded_inversion_BinTree.set",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
         "function_token_typing_FStar.Pervasives.pattern",
         "function_token_typing_Prims.unit",
         "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
-        "projection_inverse_BoxBool_proj_0",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
-        "projection_inverse_FStar.Pervasives.Native.None_a",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_4f35c557bb8e260f6835273ba1d33437",
         "refinement_interpretation_Tm_refine_55403de6503aa05f327d8eb577d7bd1b",
-        "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
         "token_correspondence_AVL.remove.fuel_instrumented",
-        "typing_Compare.uu___is_EQ", "typing_Set.member", "unit_typing"
+        "typing_FStar.Pervasives.Native.__proj__Mktuple2__item___1",
+        "typing_SetAVL.member", "unit_typing"
       ],
       0,
-      "b87cd38e187de2cb0d196bd7eb3d7be3"
+      "1eb119677089fceb78563e4713c959d0"
     ]
   ]
 ]

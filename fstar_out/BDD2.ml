@@ -69,10 +69,10 @@ let (compareNode : node Compare.comparaison) =
       | (Leaf ls, uu___) -> Compare.GT
       | (uu___, Leaf hs) -> Compare.LT
 type global_table' = {
-  map: (node, bdd, unit) Map.map ;
+  map: (node, bdd, unit) MapAVL.map ;
   size: Prims.nat }
 let (__proj__Mkglobal_table'__item__map :
-  global_table' -> (node, bdd, unit) Map.map) =
+  global_table' -> (node, bdd, unit) MapAVL.map) =
   fun projectee -> match projectee with | { map; size;_} -> map
 let (__proj__Mkglobal_table'__item__size : global_table' -> Prims.nat) =
   fun projectee -> match projectee with | { map; size;_} -> size
