@@ -78,3 +78,5 @@ let (__proj__Mkglobal_table'__item__size : global_table' -> Prims.nat) =
   fun projectee -> match projectee with | { map; size;_} -> size
 type 'table is_valid_table = unit
 type global_table = global_table'
+type ('table, 'node1) compatible_node = Obj.t
+

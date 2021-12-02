@@ -112,3 +112,54 @@ let is_valid_table (table:global_table') : prop =
 (** type of valid table *)
 type global_table = table:global_table'{is_valid_table table}
 
+
+let compatible_node (table:global_table) (node:node): prop = 
+    match node with 
+    | Leaf s -> true
+    | Node s l v h -> 
+        M.member l.node l table.map /\ 
+        M.member h.node h table.map
+
+
+let contain_lemma1 (table:global_table) (node:node) : 
+    Lemma 
+        (requires compatible_node table node) 
+
+        (ensures (
+            match M.find node table.map with 
+            | Some (n, b) -> n == node /\ b.node == node
+            | None -> true
+        ))
+    
+    = match M.find node table.map with 
+    | None -> ()
+
+    | Some (n, b) -> 
+    begin
+        assert (EQ? (compareNode n node));
+
+        match node with 
+        | Leaf s -> ()
+        | Node s l v h -> begin 
+            assert (M.member l.node l table.map);
+            assert (M.member h.node h table.map);
+
+            assert (get_sign b == s);
+            assert (Node? n);
+
+            assert ((get_low  b).tag == l.tag);
+            assert ((get_high b).tag == h.tag);
+            assert (get_var b == v)
+        end 
+    end 
+
+let contain_lemma2 (table:global_table) (node:node) : 
+    Lemma 
+        (requires compatible_node table node)
+
+        (ensures (
+            M.mem node table.map <==> M.member_key node table.map
+        ))
+    
+    = contain_lemma1 table node
+
