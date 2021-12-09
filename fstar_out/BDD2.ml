@@ -119,3 +119,17 @@ let rec (makeNode : global_table -> node' -> (bdd * global_table)) =
                      size = (table.size + Prims.int_one)
                    } in
                  (bdd1, table'))
+let (notBDD : global_table -> bdd -> (bdd * global_table)) =
+  fun table ->
+    fun input ->
+      match input.node with
+      | Leaf s -> makeNode table (Leaf (inv s))
+      | Node (s, l, v, h) -> makeNode table (Node ((inv s), l, v, h))
+let (apply :
+  global_table ->
+    (Prims.bool -> Prims.bool -> Prims.bool) ->
+      bdd -> bdd -> (bdd * global_table))
+  = fun table -> fun f -> fun l -> fun r -> Prims.admit ()
+let (restrict :
+  global_table -> Prims.nat -> Prims.bool -> bdd -> (bdd * global_table)) =
+  fun table -> fun n -> fun b -> fun input -> Prims.admit ()

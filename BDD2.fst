@@ -198,6 +198,7 @@ let rec makeNode (table: global_table) (node:node') :
         (ensures fun out -> (
             let bdd, table' = out in 
             M.member bdd.node bdd table'.map /\ // (Leaf? l.node || get_var l < v) /\
+            (forall n b. M.member n b table.map ==> M.member n b table'.map) /\ 
             (forall f. eval_node f bdd.node == eval_node f node)
         ))
 
@@ -238,3 +239,54 @@ let rec makeNode (table: global_table) (node:node') :
         end 
     end 
 #pop-options 
+
+let notBDD (table:global_table) (input:bdd) : 
+    Pure 
+        (bdd&global_table)
+
+        (requires M.member input.node input table.map) 
+
+        (ensures fun out -> (
+            let bdd', table' = out in 
+            M.member bdd'.node bdd' table'.map /\ 
+            (forall f. eval_node f bdd'.node == not (eval_node f input.node)) /\ 
+            (forall n b. M.member n b table.map ==> M.member n b table'.map) 
+        ))
+    
+    = match input.node with 
+    | Leaf s       -> makeNode table (Leaf (inv s))
+    | Node s l v h -> makeNode table (Node (inv s) l v h)
+
+
+let apply (table: global_table) (f : bool -> bool -> bool) (l: bdd) (r : bdd) : 
+    Pure 
+        (bdd&global_table)
+
+        (requires 
+            M.member l.node l table.map /\ 
+            M.member r.node r table.map 
+        )
+
+        (ensures fun out -> (
+            let bdd', table' = out in 
+            M.member bdd'.node bdd' table'.map /\ 
+            (forall n b. M.member n b table.map ==> M.member n b table'.map) /\ 
+            (forall g. eval_node g bdd'.node == f (eval_node g l.node) (eval_node g r.node))
+        ))
+    
+    = admit ()
+
+let restrict (table:global_table) (n:nat) (b:bool) (input:bdd) : 
+    Pure 
+        (bdd&global_table)
+
+        (requires M.member input.node input table.map)
+
+        (ensures fun out -> (
+            let bdd', table' = out in 
+            M.member bdd'.node bdd' table'.map /\ 
+            (forall n b. M.member n b table.map ==> M.member n b table'.map) /\ 
+            (forall f. eval_node f bdd'.node == eval_node (fun i -> if i = n then b else f i) input.node)
+        ))
+    
+    = admit ()
