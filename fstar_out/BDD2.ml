@@ -42,7 +42,7 @@ let (get_sign : bdd' -> sign) =
 type 'node is_obdd = Obj.t
 type bdd = bdd'
 type node = node'
-let rec (eval_node : (Prims.nat -> Prims.bool) -> node -> Prims.bool) =
+let rec (eval_node : (Prims.nat -> Prims.bool) -> node' -> Prims.bool) =
   fun f ->
     fun node1 ->
       match node1 with
@@ -91,3 +91,31 @@ type 'table is_valid_table = unit
 type global_table = global_table'
 type ('table, 'node1) compatible_node = Obj.t
 
+
+let (inv : sign -> sign) =
+  fun s -> match s with | INVERSE -> IDENTITY | IDENTITY -> INVERSE
+let rec (makeNode : global_table -> node' -> (bdd * global_table)) =
+  fun table ->
+    fun node1 ->
+      match node1 with
+      | Leaf (IDENTITY) -> ({ tag = Prims.int_zero; node = node1 }, table)
+      | Leaf (INVERSE) -> ({ tag = Prims.int_one; node = node1 }, table)
+      | Node (s, l, v, h) ->
+          if l.tag = h.tag
+          then
+            (match (s, (l.node)) with
+             | (IDENTITY, uu___) -> (l, table)
+             | (INVERSE, Node (ls, ll, lv, lh)) ->
+                 makeNode table (Node ((inv ls), ll, lv, lh))
+             | (INVERSE, Leaf ls) -> makeNode table (Leaf (inv ls)))
+          else
+            (match MapAVL.find compareNode node1 table.map with
+             | FStar_Pervasives_Native.Some (n, b) -> (b, table)
+             | FStar_Pervasives_Native.None ->
+                 let bdd1 = { tag = (table.size); node = node1 } in
+                 let table' =
+                   {
+                     map = (MapAVL.add compareNode table.map node1 bdd1);
+                     size = (table.size + Prims.int_one)
+                   } in
+                 (bdd1, table'))

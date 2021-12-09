@@ -48,7 +48,7 @@ type bdd  = bdd:bdd'  {is_obdd bdd.node}
 (** type for a valid node *)
 type node = node:node'{is_obdd node}
 
-let rec eval_node (f: nat -> bool) (node:node) : bool
+let rec eval_node (f: nat -> bool) (node:node') : bool
     = match node with 
     | Leaf IDENTITY -> true
     | Leaf INVERSE -> false
@@ -96,7 +96,9 @@ type global_table' = {
 
 (** a good memoization table !!! *)
 let is_valid_table (table:global_table') : prop = 
-    forall (node:node) (bdd:bdd). M.member node bdd table.map ==> (
+    M.member (Leaf IDENTITY) ({tag=0; node=Leaf IDENTITY}) table.map /\
+    M.member (Leaf INVERSE)  ({tag=1; node=Leaf INVERSE }) table.map /\
+    (forall (node:node) (bdd:bdd). M.member node bdd table.map ==> (
 
         (* each pair bdd node is valid *)
         bdd.node == node /\
@@ -116,7 +118,7 @@ let is_valid_table (table:global_table') : prop =
             M.member l.node l table.map /\ 
             M.member h.node h table.map
         ))
-    )
+    ))
 
 (** type of valid table *)
 type global_table = table:global_table'{is_valid_table table}
@@ -172,3 +174,67 @@ let contain_lemma2 (table:global_table) (node:node) :
     
     = contain_lemma1 table node
 
+let inv (s:sign) = match s with 
+    | INVERSE -> IDENTITY
+    | IDENTITY -> INVERSE
+
+#push-options "--z3rlimit 50"
+let rec makeNode (table: global_table) (node:node') : 
+    Pure
+        (bdd&global_table)
+
+        (requires (
+            match node with 
+            | Leaf s -> true 
+            | Node s l v h -> 
+                is_obdd l.node /\ 
+                is_obdd h.node /\
+                M.member l.node l table.map /\
+                M.member h.node h table.map /\
+                (Leaf? l.node || get_var l < v) /\
+                (Leaf? h.node || get_var h < v)
+        ))
+
+        (ensures fun out -> (
+            let bdd, table' = out in 
+            M.member bdd.node bdd table'.map /\ // (Leaf? l.node || get_var l < v) /\
+            (forall f. eval_node f bdd.node == eval_node f node)
+        ))
+
+        (decreases (
+            match node with 
+            | Leaf s -> 0 
+            | Node s l v h -> v + 1
+        ))
+    
+    = match node with 
+    | Leaf IDENTITY -> ({tag=0; node=node}, table)
+    | Leaf INVERSE  -> ({tag=1; node=node}, table)
+    | Node s l v h -> 
+    begin 
+        if l.tag = h.tag then 
+        begin 
+            match s, l.node with 
+            | IDENTITY, _ -> (l, table)
+            | INVERSE, Node ls ll lv lh -> makeNode table (Node (inv ls) ll lv lh) 
+            | INVERSE, Leaf ls          -> makeNode table (Leaf (inv ls))
+        end 
+        else 
+        begin 
+            assert (is_obdd node);
+
+            match M.find node table.map with 
+            | Some (n, b) -> 
+            begin 
+                contain_lemma1 table node; 
+                (b, table)
+            end 
+            | None -> 
+            begin 
+                let bdd = {tag=table.size; node=node} in 
+                let table' = {map=M.add table.map node bdd; size=table.size+1} in
+                (bdd, table') 
+            end 
+        end 
+    end 
+#pop-options 
