@@ -125,6 +125,16 @@ let (notBDD : global_table -> bdd -> (bdd * global_table)) =
       match input.node with
       | Leaf s -> makeNode table (Leaf (inv s))
       | Node (s, l, v, h) -> makeNode table (Node ((inv s), l, v, h))
+let rec (eval_node_cex :
+  global_table -> bdd -> bdd -> Prims.nat -> Prims.bool) =
+  fun table ->
+    fun b1 ->
+      fun b2 ->
+        match ((b1.node), (b2.node)) with
+        | (Leaf s1, Leaf s2) -> (fun n -> true)
+        | (Leaf s1, Node (s2, l2, v2, h2)) ->
+            if l2.node <> b1.node then Prims.admit () else Prims.admit ()
+        | (uu___, uu___1) -> Prims.admit ()
 let (apply :
   global_table ->
     (Prims.bool -> Prims.bool -> Prims.bool) ->
