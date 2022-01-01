@@ -120,6 +120,8 @@ let rec (notBDD : global_table -> bdd -> (bdd * global_table)) =
                let uu___1 = notBDD table1 h in
                (match uu___1 with
                 | (h', table2) -> makeNode table2 (Node (l', v, h'))))
+let (max : Prims.int -> Prims.int -> Prims.int) =
+  fun x -> fun y -> if x > y then x else y
 type 'f apply_map = ((bdd * bdd), bdd, unit) MapAVL.map
 type ('f, 'table, 'map) is_valid_apply_map = unit
 let (from_bool : Prims.bool -> bdd) =
@@ -193,42 +195,58 @@ let rec (apply_with :
                                    | x -> x)) (l, r) local
                  with
                  | FStar_Pervasives_Native.None ->
-                     if lv = rv
-                     then
-                       let uu___ = apply_with table f local ll rl in
-                       (match uu___ with
-                        | (l', table1, local1) ->
-                            let uu___1 = apply_with table1 f local1 lh rh in
-                            (match uu___1 with
-                             | (r', table2, local2) ->
-                                 let uu___2 =
-                                   makeNode table2 (Node (l', lv, r')) in
-                                 (match uu___2 with
-                                  | (out, table3) -> (out, table3, local2))))
-                     else
-                       if lv > rv
+                     let uu___ =
+                       if lv = rv
                        then
-                         (let uu___1 = apply_with table f local ll r in
-                          match uu___1 with
-                          | (l', table1, local1) ->
-                              let uu___2 = apply_with table1 f local1 lh r in
-                              (match uu___2 with
-                               | (r', table2, local2) ->
-                                   let uu___3 =
-                                     makeNode table2 (Node (l', lv, r')) in
-                                   (match uu___3 with
-                                    | (out, table3) -> (out, table3, local2))))
+                         let uu___1 = apply_with table f local ll rl in
+                         match uu___1 with
+                         | (l', table1, local1) ->
+                             let uu___2 = apply_with table1 f local1 lh rh in
+                             (match uu___2 with
+                              | (r', table2, local2) ->
+                                  let uu___3 =
+                                    makeNode table2 (Node (l', lv, r')) in
+                                  (match uu___3 with
+                                   | (out, table3) -> (out, table3, local2)))
                        else
-                         (let uu___2 = apply_with table f local l rl in
-                          match uu___2 with
-                          | (l', table1, local1) ->
-                              let uu___3 = apply_with table1 f local1 l rh in
-                              (match uu___3 with
-                               | (r', table2, local2) ->
-                                   let uu___4 =
-                                     makeNode table2 (Node (l', rv, r')) in
-                                   (match uu___4 with
-                                    | (out, table3) -> (out, table3, local2))))
+                         if lv > rv
+                         then
+                           (let uu___2 = apply_with table f local ll r in
+                            match uu___2 with
+                            | (l', table1, local1) ->
+                                let uu___3 = apply_with table1 f local1 lh r in
+                                (match uu___3 with
+                                 | (r', table2, local2) ->
+                                     let uu___4 =
+                                       makeNode table2 (Node (l', lv, r')) in
+                                     (match uu___4 with
+                                      | (out, table3) ->
+                                          (out, table3, local2))))
+                         else
+                           (let uu___3 = apply_with table f local l rl in
+                            match uu___3 with
+                            | (l', table1, local1) ->
+                                let uu___4 = apply_with table1 f local1 l rh in
+                                (match uu___4 with
+                                 | (r', table2, local2) ->
+                                     let uu___5 =
+                                       makeNode table2 (Node (l', rv, r')) in
+                                     (match uu___5 with
+                                      | (out, table3) ->
+                                          (out, table3, local2)))) in
+                     (match uu___ with
+                      | (out, table', local') ->
+                          let local42 =
+                            MapAVL.add
+                              (fun uu___1 ->
+                                 fun uu___2 ->
+                                   match (uu___1, uu___2) with
+                                   | ((b1, b2), (b3, b4)) ->
+                                       (match compareInt b1.tag b3.tag with
+                                        | Compare.EQ ->
+                                            compareInt b2.tag b4.tag
+                                        | x -> x)) local' (l, r) out in
+                          (out, table', local42))
                  | FStar_Pervasives_Native.Some (n, b) -> (b, table, local))
 let (apply :
   global_table ->
@@ -241,6 +259,52 @@ let (apply :
         fun r ->
           let uu___ = apply_with table f BinTree.Leaf l r in
           match uu___ with | (bdd'1, table', uu___1) -> (bdd'1, table')
+type ('n, 'b) restrict_map = (bdd, bdd, unit) MapAVL.map
+type ('n, 'b, 'table, 'map) is_valid_restrict_map = unit
+
+let rec (restrict_with :
+  global_table ->
+    Prims.nat ->
+      Prims.bool ->
+        (unit, unit) restrict_map ->
+          bdd -> (bdd * global_table * (unit, unit) restrict_map))
+  =
+  fun table ->
+    fun n ->
+      fun b ->
+        fun map ->
+          fun input ->
+            if (measure input.node) < (n + Prims.int_one)
+            then (input, table, map)
+            else
+              (match input.node with
+               | Node (l, k, h) ->
+                   if k = n
+                   then (if b then (h, table, map) else (l, table, map))
+                   else
+                     (let uu___2 =
+                        let uu___3 = restrict_with table n b map l in
+                        match uu___3 with
+                        | (l', table1, map1) ->
+                            let uu___4 = restrict_with table1 n b map1 h in
+                            (match uu___4 with
+                             | (h', table2, map2) ->
+                                 let uu___5 =
+                                   makeNode table2 (Node (l', k, h')) in
+                                 (match uu___5 with
+                                  | (out, table3) -> (out, table3, map2))) in
+                      match uu___2 with
+                      | (out, table', map') ->
+                          let map42 =
+                            MapAVL.add
+                              (fun b1 -> fun b2 -> compareInt b1.tag b2.tag)
+                              map' input out in
+                          Prims.admit ()))
 let (restrict :
   global_table -> Prims.nat -> Prims.bool -> bdd -> (bdd * global_table)) =
-  fun table -> fun n -> fun b -> fun input -> Prims.admit ()
+  fun table ->
+    fun n ->
+      fun b ->
+        fun input ->
+          let uu___ = restrict_with table n b BinTree.Leaf input in
+          match uu___ with | (bdd'1, table', uu___1) -> (bdd'1, table')

@@ -247,15 +247,18 @@ irreducible let rec notBDD (table:global_table) (input:bdd) :
     end 
 #pop-options 
 
+let max x y = if x > y then x else y
+
 type apply_map (f:bool->bool->bool) = m:M.map (bdd&bdd) bdd (
         fun (b1, b2) (b3, b4) -> match compareInt b1.tag b3.tag with 
         | EQ -> compareInt b2.tag b4.tag 
         | x -> x
     )
 
+
 let is_valid_apply_map (#f:bool->bool->bool) (table:global_table) (map: apply_map f) : prop = 
     forall (b1:bdd) (b2:bdd) (b3:bdd). M.member (b1, b2) b3 map ==> (
-            (measure b3.node <= (fun x y -> if x > y then x else y) (measure b1.node) (measure b2.node)) /\
+            (measure b3.node <= max (measure b1.node) (measure b2.node)) /\
             (forall g. f (eval_node g b1.node) (eval_node g b2.node) == eval_node g b3.node) /\
             M.member b1.node b1 table.map /\
             M.member b2.node b2 table.map /\
@@ -265,7 +268,7 @@ let is_valid_apply_map (#f:bool->bool->bool) (table:global_table) (map: apply_ma
 let from_bool : bool -> bdd = fun b -> 
     if b then {tag=1; node=One} else {tag=0; node=Zero}
 
-#push-options "--z3rlimit 100"
+#push-options "--z3rlimit 200"
 irreducible let rec apply_with (table: global_table) (f:bool->bool->bool) (local:apply_map f) (l:bdd) (r:bdd) : 
     Pure 
         (bdd&global_table&apply_map f)
@@ -282,7 +285,7 @@ irreducible let rec apply_with (table: global_table) (f:bool->bool->bool) (local
             M.member bdd'.node bdd' table'.map /\ 
             (forall n b. M.member n b table.map ==> M.member n b table'.map) /\ 
             (forall g. eval_node g bdd'.node == f (eval_node g l.node) (eval_node g r.node)) /\ 
-            (measure bdd'.node <= (fun x y -> if x > y then x else y) (measure l.node) (measure r.node))
+            (measure bdd'.node <= max (measure l.node) (measure r.node))
         )) 
         
         (decreases (
@@ -345,28 +348,33 @@ irreducible let rec apply_with (table: global_table) (f:bool->bool->bool) (local
             match M.find (l, r) local with
             | None -> 
             begin 
-                if lv = rv then 
-                begin
-                    let l', table1, local1 = apply_with table  f local  ll rl in
-                    let r', table2, local2 = apply_with table1 f local1 lh rh in  
-                    let out, table3 = makeNode table2 (Node l' lv r') in 
-                    out, table3, local2
+                let out, table', local' =
+                    if lv = rv then 
+                    begin
+                        let l', table1, local1 = apply_with table  f local  ll rl in
+                        let r', table2, local2 = apply_with table1 f local1 lh rh in  
+                        let out, table3 = makeNode table2 (Node l' lv r') in 
+                        out, table3, local2
 
-                end 
-                else if lv > rv then 
-                begin 
-                    let l', table1, local1 = apply_with table  f local  ll r in
-                    let r', table2, local2 = apply_with table1 f local1 lh r in
-                    let out, table3 = makeNode table2 (Node l' lv r') in 
-                    out, table3, local2
-                end 
-                else 
-                begin 
-                    let l', table1, local1 = apply_with table  f local  l rl in
-                    let r', table2, local2 = apply_with table1 f local1 l rh in
-                    let out, table3 = makeNode table2 (Node l' rv r') in 
-                    out, table3, local2
-                end 
+                    end 
+                    else if lv > rv then 
+                    begin admit (); 
+                        let l', table1, local1 = apply_with table  f local  ll r in
+                        let r', table2, local2 = apply_with table1 f local1 lh r in
+                        let out, table3 = makeNode table2 (Node l' lv r') in 
+                        out, table3, local2
+                    end 
+                    else 
+                    begin admit (); 
+                        let l', table1, local1 = apply_with table  f local  l rl in
+                        let r', table2, local2 = apply_with table1 f local1 l rh in
+                        let out, table3 = makeNode table2 (Node l' rv r') in 
+                        out, table3, local2
+                    end 
+                in 
+                let local42 = M.add local' (l, r) out in 
+                assert (forall g. eval_node g out.node == f (eval_node g l.node) (eval_node g r.node));
+                out, table', local42
             end 
             | Some (n, b) -> 
             begin 
@@ -400,7 +408,81 @@ let apply (table: global_table) (f : bool -> bool -> bool) (l: bdd) (r : bdd) :
     = let bdd', table', _ = apply_with table f (BinTree.Leaf) l r in 
     bdd', table'
 
-let restrict (table:global_table) (n:nat) (b:bool) (input:bdd) : 
+type restrict_map (n: nat) (b:bool) = m:M.map bdd bdd (
+        fun b1 b2 -> compareInt b1.tag b2.tag
+    )
+
+let is_valid_restrict_map (#n: nat) (#b:bool) (table:global_table) (map: restrict_map n b) : prop = 
+    forall (b1:bdd) (b2:bdd). M.member b1 b2 map ==> (
+            (forall g. eval_node g b2.node == eval_node (fun i -> if i = n then b else g n) b1.node) /\
+            measure b2.node <= measure b1.node /\
+            M.member b1.node b1 table.map /\
+            M.member b2.node b2 table.map
+    )
+
+let rec measure_lemma (n:nat) (b:bool) (input:bdd) : 
+    Lemma 
+        (forall f. measure input.node < n+1 ==> eval_node (fun i -> if i = n then b else f i) input.node == eval_node f input.node)
+    
+    = match input.node with 
+    | Zero | One -> ()
+    | Node l k h -> 
+    begin 
+        assert (measure l.node < measure input.node);
+        assert (measure h.node < measure input.node);
+        measure_lemma n b h; 
+        measure_lemma n b l
+    end 
+
+#push-options "--z3rlimit 200"
+irreducible let rec restrict_with (table:global_table) (n:nat) (b:bool) (map:restrict_map n b) (input:bdd) :
+    Pure 
+        (bdd&global_table&restrict_map n b)
+
+        (requires is_valid_restrict_map table map /\  M.member input.node input table.map)
+
+        (ensures fun out -> (
+            let bdd', table', map' = out in 
+            is_valid_restrict_map table' map'  /\
+            M.member bdd'.node bdd' table'.map /\
+            measure bdd'.node <= measure input.node /\
+            (forall n b. M.member n b table.map ==> M.member n b table'.map) /\ 
+            (forall f. eval_node f bdd'.node == eval_node (fun i -> if i = n then b else f i) input.node)
+        ))
+
+        (decreases (measure input.node))
+    
+    = if measure input.node < n+1 then 
+    begin 
+        measure_lemma n b input;
+        (input, table, map) 
+    end else begin 
+        match input.node with 
+        | Node l k h -> 
+        begin
+            measure_lemma n b l;
+            measure_lemma n b h;
+            if k = n then if b then (h, table, map) else (l, table, map) else 
+            let (out, table', map') = 
+                let (l', table1, map1) = restrict_with table  n b map  l in 
+                let (h', table2, map2) = restrict_with table1 n b map1 h in 
+                let (out, table3) = makeNode table2 (Node l' k h') in
+                (out, table3, map2)
+            in 
+            let map42 = M.add map' input out in 
+            assert (is_valid_restrict_map #n #b table' map');
+            assert (forall f. eval_node f out.node == eval_node (fun i -> if i = n then b else f i) input.node);
+            assert (forall x y. (M.member x.node x table'.map /\ M.member y.node y table'.map) ==> (x.tag == y.tag ==> x == y));
+            assert (forall x y. M.member x y map42 ==> (M.member x.node x table'.map /\ M.member y.node y table'.map));
+            assert (forall x y. M.member x y map42 <==> (if x.tag = input.tag then (x == input /\ y == out) else M.member x y map'));
+            assert (is_valid_restrict_map #n #b table' map42);
+            admit()//(out, table', map42)
+        end 
+    end 
+
+#pop-options 
+
+let restrict (table:global_table) (n:nat) (b:bool) (input:bdd) :
     Pure 
         (bdd&global_table)
 
@@ -413,4 +495,4 @@ let restrict (table:global_table) (n:nat) (b:bool) (input:bdd) :
             (forall f. eval_node f bdd'.node == eval_node (fun i -> if i = n then b else f i) input.node)
         ))
     
-    = admit ()
+    = let (bdd', table', _) = restrict_with table n b BinTree.Leaf input in (bdd', table')
