@@ -261,6 +261,20 @@ let (apply :
           match uu___ with | (bdd'1, table', uu___1) -> (bdd'1, table')
 type ('n, 'b) restrict_map = (bdd, bdd, unit) MapAVL.map
 type ('n, 'b, 'table, 'map) is_valid_restrict_map = unit
+let (add_in_restrict_map_lemma :
+  Prims.nat ->
+    Prims.bool ->
+      global_table ->
+        (unit, unit) restrict_map -> bdd -> bdd -> (unit, unit) restrict_map)
+  =
+  fun n ->
+    fun b ->
+      fun table ->
+        fun map ->
+          fun input ->
+            fun out ->
+              MapAVL.add (fun b1 -> fun b2 -> compareInt b1.tag b2.tag) map
+                input out
 
 let rec (restrict_with :
   global_table ->
@@ -299,7 +313,9 @@ let rec (restrict_with :
                             MapAVL.add
                               (fun b1 -> fun b2 -> compareInt b1.tag b2.tag)
                               map' input out in
-                          Prims.admit ()))
+                          (out, table',
+                            (add_in_restrict_map_lemma n b table' map' input
+                               out))))
 let (restrict :
   global_table -> Prims.nat -> Prims.bool -> bdd -> (bdd * global_table)) =
   fun table ->

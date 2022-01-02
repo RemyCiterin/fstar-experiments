@@ -414,13 +414,32 @@ type restrict_map (n: nat) (b:bool) = m:M.map bdd bdd (
 
 let is_valid_restrict_map (#n: nat) (#b:bool) (table:global_table) (map: restrict_map n b) : prop = 
     forall (b1:bdd) (b2:bdd). M.member b1 b2 map ==> (
-            (forall g. eval_node g b2.node == eval_node (fun i -> if i = n then b else g n) b1.node) /\
+            (forall f. eval_node f b2.node == eval_node (fun i -> if i = n then b else f i) b1.node) /\
             measure b2.node <= measure b1.node /\
             M.member b1.node b1 table.map /\
             M.member b2.node b2 table.map
     )
 
-let rec measure_lemma (n:nat) (b:bool) (input:bdd) : 
+#push-options "--z3rlimit 100"
+irreducible let add_in_restrict_map_lemma 
+    (#n: nat) (#b:bool) (table:global_table) (map: restrict_map n b) (input:bdd) (out:bdd) : 
+    Pure 
+        (restrict_map n b)
+        (requires 
+            is_valid_restrict_map #n #b table map /\
+            (forall f. eval_node f out.node == eval_node (fun i -> if i = n then b else f i) input.node) /\
+            measure out.node <= measure input.node /\ 
+            M.member input.node input table.map /\
+            M.member out.node out table.map
+        )
+        (ensures fun map' -> (
+            is_valid_restrict_map #n #b table map'
+        ))
+    = M.add map input out
+#pop-options
+
+
+let rec measure_lemma (#n: nat) (#b:bool) (input:bdd) :
     Lemma 
         (forall f. measure input.node < n+1 ==> eval_node (fun i -> if i = n then b else f i) input.node == eval_node f input.node)
     
@@ -430,8 +449,8 @@ let rec measure_lemma (n:nat) (b:bool) (input:bdd) :
     begin 
         assert (measure l.node < measure input.node);
         assert (measure h.node < measure input.node);
-        measure_lemma n b h; 
-        measure_lemma n b l
+        measure_lemma #n #b h;
+        measure_lemma #n #b l
     end 
 
 #push-options "--z3rlimit 200"
@@ -454,14 +473,14 @@ irreducible let rec restrict_with (table:global_table) (n:nat) (b:bool) (map:res
     
     = if measure input.node < n+1 then 
     begin 
-        measure_lemma n b input;
+        measure_lemma #n #b input;
         (input, table, map) 
     end else begin 
         match input.node with 
         | Node l k h -> 
         begin
-            measure_lemma n b l;
-            measure_lemma n b h;
+            measure_lemma #n #b l;
+            measure_lemma #n #b h;
             if k = n then if b then (h, table, map) else (l, table, map) else 
             let (out, table', map') = 
                 let (l', table1, map1) = restrict_with table  n b map  l in 
@@ -470,13 +489,18 @@ irreducible let rec restrict_with (table:global_table) (n:nat) (b:bool) (map:res
                 (out, table3, map2)
             in 
             let map42 = M.add map' input out in 
-            assert (is_valid_restrict_map #n #b table' map');
             assert (forall f. eval_node f out.node == eval_node (fun i -> if i = n then b else f i) input.node);
             assert (forall x y. (M.member x.node x table'.map /\ M.member y.node y table'.map) ==> (x.tag == y.tag ==> x == y));
             assert (forall x y. M.member x y map42 ==> (M.member x.node x table'.map /\ M.member y.node y table'.map));
             assert (forall x y. M.member x y map42 <==> (if x.tag = input.tag then (x == input /\ y == out) else M.member x y map'));
-            assert (is_valid_restrict_map #n #b table' map42);
-            admit()//(out, table', map42)
+
+            assert (is_valid_restrict_map #n #b table' map');
+            //assert (forall x y. M.member x y map'  ==> (forall f. eval_node f y.node == eval_node (fun i -> if n = i then b else f i) x.node));
+            //assert (forall x y. M.member x y map42 ==> (forall f. eval_node f y.node == eval_node (fun i -> if n = i then b else f i) x.node));
+
+
+            //assert (is_valid_restrict_map #n #b table' map42);
+            (out, table', add_in_restrict_map_lemma table' map' input out)
         end 
     end 
 
