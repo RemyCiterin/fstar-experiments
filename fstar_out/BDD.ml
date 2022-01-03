@@ -313,9 +313,7 @@ let rec (restrict_with :
                             MapAVL.add
                               (fun b1 -> fun b2 -> compareInt b1.tag b2.tag)
                               map' input out in
-                          (out, table',
-                            (add_in_restrict_map_lemma n b table' map' input
-                               out))))
+                          (out, table', map42)))
 let (restrict :
   global_table -> Prims.nat -> Prims.bool -> bdd -> (bdd * global_table)) =
   fun table ->

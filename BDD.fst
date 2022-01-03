@@ -500,7 +500,7 @@ irreducible let rec restrict_with (table:global_table) (n:nat) (b:bool) (map:res
 
 
             //assert (is_valid_restrict_map #n #b table' map42);
-            (out, table', add_in_restrict_map_lemma table' map' input out)
+            (out, table', map42)
         end 
     end 
 
