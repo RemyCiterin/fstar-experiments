@@ -358,14 +358,14 @@ irreducible let rec apply_with (table: global_table) (f:bool->bool->bool) (local
 
                     end 
                     else if lv > rv then 
-                    begin admit (); 
+                    begin 
                         let l', table1, local1 = apply_with table  f local  ll r in
                         let r', table2, local2 = apply_with table1 f local1 lh r in
                         let out, table3 = makeNode table2 (Node l' lv r') in 
                         out, table3, local2
                     end 
                     else 
-                    begin admit (); 
+                    begin 
                         let l', table1, local1 = apply_with table  f local  l rl in
                         let r', table2, local2 = apply_with table1 f local1 l rh in
                         let out, table3 = makeNode table2 (Node l' rv r') in 
@@ -520,3 +520,62 @@ let restrict (table:global_table) (n:nat) (b:bool) (input:bdd) :
         ))
     
     = let (bdd', table', _) = restrict_with table n b BinTree.Leaf input in (bdd', table')
+
+let rec measure_lemma_with (#n: nat) (#b:bool) (f:nat->bool) (input:bdd) :
+    Lemma 
+        (measure input.node < n+1 ==> eval_node (fun i -> if i = n then b else f i) input.node == eval_node f input.node)
+
+        //[SMTPat (eval_node (fun i -> if i = n then b else f i))]
+    
+    = match input.node with 
+    | Zero | One -> ()
+    | Node l k h -> 
+    begin 
+        assert (measure l.node < measure input.node);
+        assert (measure h.node < measure input.node);
+        measure_lemma_with #n #b f h;
+        measure_lemma_with #n #b f l
+    end 
+
+#push-options "--z3rlimit 50"
+irreducible let rec equivalence_lemma (table:global_table) (b1:bdd) (b2:bdd) : 
+    Pure    
+        (nat -> bool)
+
+        (requires 
+            M.member b1.node b1 table.map /\ 
+            M.member b2.node b2 table.map
+        )
+
+        (ensures fun f -> (
+            b1.tag <> b2.tag ==> eval_node f b1.node <> eval_node f b2.node
+        ))
+
+        (decreases (measure b1.node + measure b2.node))
+    
+    = match b1.node, b2.node with 
+    | Zero, One | One, Zero | Zero, Zero | One, One -> fun i -> true 
+    | Zero, Node l v h | One, Node l v h -> 
+    begin 
+        assert (M.member l.node l table.map);
+        assert (M.member h.node h table.map);
+        assert (l.tag <> h.tag);
+        
+        if l.tag <> b1.tag then begin 
+            assert (measure l.node < measure b2.node);
+            let f i = equivalence_lemma table b1 l i in
+            let g i = if i = v then false else f i in
+
+            measure_lemma_with #v #false f l;
+            assert (eval_node g l.node == eval_node f l.node);
+            assert (eval_node g l.node == eval_node g b2.node);
+            //assert (eval_node f l.node <> eval_node f b1.node);
+            admit ()
+        end 
+        else begin 
+            assert (h.tag <> b1.tag);
+            admit ()
+        end 
+    end 
+    | _, _ -> admit ()
+#pop-options

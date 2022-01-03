@@ -322,3 +322,27 @@ let (restrict :
         fun input ->
           let uu___ = restrict_with table n b BinTree.Leaf input in
           match uu___ with | (bdd'1, table', uu___1) -> (bdd'1, table')
+
+let rec (equivalence_lemma :
+  global_table -> bdd -> bdd -> Prims.nat -> Prims.bool) =
+  fun table ->
+    fun b1 ->
+      fun b2 ->
+        match ((b1.node), (b2.node)) with
+        | (Zero, One) -> (fun i -> true)
+        | (One, Zero) -> (fun i -> true)
+        | (Zero, Zero) -> (fun i -> true)
+        | (One, One) -> (fun i -> true)
+        | (Zero, Node (l, v, h)) ->
+            if l.tag <> b1.tag
+            then
+              let f i = equivalence_lemma table b1 l i in
+              let g i = if i = v then false else f i in Prims.admit ()
+            else Prims.admit ()
+        | (One, Node (l, v, h)) ->
+            if l.tag <> b1.tag
+            then
+              let f i = equivalence_lemma table b1 l i in
+              let g i = if i = v then false else f i in Prims.admit ()
+            else Prims.admit ()
+        | (uu___, uu___1) -> Prims.admit ()
