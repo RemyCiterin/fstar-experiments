@@ -514,7 +514,8 @@ let restrict (table:global_table) (n:nat) (b:bool) (input:bdd) :
 
         (ensures fun out -> (
             let bdd', table' = out in 
-            M.member bdd'.node bdd' table'.map /\ 
+            M.member bdd'.node bdd' table'.map /\
+            measure bdd'.node <= measure input.node /\ 
             (forall n b. M.member n b table.map ==> M.member n b table'.map) /\ 
             (forall f. eval_node f bdd'.node == eval_node (fun i -> if i = n then b else f i) input.node)
         ))
@@ -537,45 +538,70 @@ let rec measure_lemma_with (#n: nat) (#b:bool) (f:nat->bool) (input:bdd) :
         measure_lemma_with #n #b f l
     end 
 
-#push-options "--z3rlimit 50"
-irreducible let rec equivalence_lemma (table:global_table) (b1:bdd) (b2:bdd) : 
-    Pure    
-        (nat -> bool)
+#push-options "--z3rlimit 100"
+let rec simplify (table:global_table) (b1:bdd) (b2:bdd) : 
+    Pure 
+        (bdd&global_table)
 
         (requires 
-            M.member b1.node b1 table.map /\ 
+            b2.node <> Zero /\
+            M.member b1.node b1 table.map /\
             M.member b2.node b2 table.map
         )
 
-        (ensures fun f -> (
-            b1.tag <> b2.tag ==> eval_node f b1.node <> eval_node f b2.node
+        (ensures fun out -> (
+            let bdd', table' = out  in 
+            M.member bdd'.node bdd' table'.map /\ 
+            measure bdd'.node <= (max (measure b1.node) (measure b2.node)) /\
+            (forall x y. M.member x y table.map ==> M.member x y table'.map) /\
+            (forall f. (eval_node f b1.node /\ eval_node f b2.node) ==> (eval_node f bdd'.node) ==> (eval_node f b2.node ==> eval_node f b1.node))
         ))
 
-        (decreases (measure b1.node + measure b2.node))
+        (decreases (
+            measure b1.node + measure b2.node
+        ))
     
-    = match b1.node, b2.node with 
-    | Zero, One | One, Zero | Zero, Zero | One, One -> fun i -> true 
-    | Zero, Node l v h | One, Node l v h -> 
-    begin 
-        assert (M.member l.node l table.map);
-        assert (M.member h.node h table.map);
-        assert (l.tag <> h.tag);
-        
-        if l.tag <> b1.tag then begin 
-            assert (measure l.node < measure b2.node);
-            let f i = equivalence_lemma table b1 l i in
-            let g i = if i = v then false else f i in
+    = match b1.node, b2.node with
+    | Zero, _ | One, _ | _, One -> (b1, table)
+    | Node l1 v1 h1, Node l2 v2 h2 -> begin 
+        if v1 > v2 then begin 
+            measure_lemma #v1 #false b2;
+            measure_lemma #v1 #true  b2;
+            let l, table1 = simplify table  l1 b2 in 
+            let h, table2 = simplify table1 h1 b2 in 
+            makeNode table2 (Node l v1 h)
 
-            measure_lemma_with #v #false f l;
-            assert (eval_node g l.node == eval_node f l.node);
-            assert (eval_node g l.node == eval_node g b2.node);
-            //assert (eval_node f l.node <> eval_node f b1.node);
-            admit ()
-        end 
-        else begin 
-            assert (h.tag <> b1.tag);
-            admit ()
+
+        end else if v2 > v1 then begin
+            measure_lemma #v2 #false b1;
+            measure_lemma #v2 #true  b1;
+
+            if l2.node = Zero then begin
+                assert (h2.node <> Zero);
+                simplify table b1 h2
+            end else 
+            if h2.node = Zero then begin
+                assert (l2.node <> Zero);
+                simplify table b1 l2
+            end else
+            
+            let h, table1 = simplify table  b1 h2 in 
+            let l, table2 = simplify table1 b1 l2 in 
+            makeNode table2 (Node l v2 h)
+
+        end else begin 
+            if l2.node = Zero then begin 
+                assert (h2.node <> Zero);
+                simplify table h1 h2
+            end else 
+            if h2.node = Zero then begin 
+                assert (l2.node <> Zero);
+                simplify table l1 l2 
+            end else 
+
+            let h, table1 = simplify table  h1 h2 in 
+            let l, table2 = simplify table1 l1 l2 in 
+            makeNode table2 (Node l v2 h)
         end 
     end 
-    | _, _ -> admit ()
 #pop-options

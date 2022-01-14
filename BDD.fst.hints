@@ -1,5 +1,5 @@
 [
-  "cƒ!\u0006}š]ƒ\u001e?\u0002Ä\u00121÷m",
+  "if\nA&\u0001ÖÓaÛ\fþ|n8Û",
   [
     [
       "BDD.bdd'",
@@ -14,7 +14,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "ac84f7742cfa08dff45b18997c1cc5f4"
+      "0e0fe5abebb12e6593c2eda591694786"
     ],
     [
       "BDD.__proj__Node__item___0",
@@ -26,7 +26,7 @@
         "refinement_interpretation_Tm_refine_735e4fdb3cc6ebafad74e17a90734191"
       ],
       0,
-      "9ed4759a1e2d228be7760b5e93c61f05"
+      "cdaa427da44b3160f496b7435561e34b"
     ],
     [
       "BDD.__proj__Node__item___1",
@@ -38,7 +38,7 @@
         "refinement_interpretation_Tm_refine_735e4fdb3cc6ebafad74e17a90734191"
       ],
       0,
-      "6ce86928e73e106abfd17a4d868af087"
+      "46aac9438944911e31029d8d4ffee7c9"
     ],
     [
       "BDD.__proj__Node__item___2",
@@ -50,7 +50,7 @@
         "refinement_interpretation_Tm_refine_735e4fdb3cc6ebafad74e17a90734191"
       ],
       0,
-      "ff02dacd9385f2b67429e0d7b58ca564"
+      "9bca2b919829e7ad5594c6cae8a78293"
     ],
     [
       "BDD.get_low",
@@ -62,7 +62,7 @@
         "refinement_interpretation_Tm_refine_5f6fb9aa49157f71008a9bed3be3cba5"
       ],
       0,
-      "71fe057f3e7d0366b85fbe2966c46a2e"
+      "444053eaa2ae6e4bef370228cd5af04d"
     ],
     [
       "BDD.get_high",
@@ -74,7 +74,7 @@
         "refinement_interpretation_Tm_refine_5f6fb9aa49157f71008a9bed3be3cba5"
       ],
       0,
-      "9089c6f8453c52b3877f55819f03dac6"
+      "eefbfe6597db38f3848ad65646d6d1f9"
     ],
     [
       "BDD.get_var",
@@ -86,7 +86,7 @@
         "refinement_interpretation_Tm_refine_5f6fb9aa49157f71008a9bed3be3cba5"
       ],
       0,
-      "6baec26612f6199d606a24540ad027be"
+      "874f4ad16e7757f909d7d4a1b7f715bb"
     ],
     [
       "BDD.is_leaf",
@@ -100,7 +100,7 @@
         "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "cce6cf8f9e272ebf543ddd8d8dc2e181"
+      "4c324bc5a2e88a8e26a893911745674f"
     ],
     [
       "BDD.is_obdd",
@@ -130,7 +130,7 @@
         "typing_tok_Prims.T@tok"
       ],
       0,
-      "f6d765ff4db89f7c3bab14262769798f"
+      "7742e7b1c3073bf141011f8e4a63f770"
     ],
     [
       "BDD.eval_node",
@@ -149,7 +149,7 @@
         "subterm_ordering_BDD.Node"
       ],
       0,
-      "cc254442992b0bed6100fc964dbfef17"
+      "9c048e7182c9ceaec81de63832fe8844"
     ],
     [
       "BDD.compareInt",
@@ -180,7 +180,7 @@
         "typing_Tm_abs_1815b1cdabf82feeaae4aa631ee8cbc2"
       ],
       0,
-      "870550c662049fcd935a056e559217e4"
+      "2819c923b922f37cb363693d499c9953"
     ],
     [
       "BDD.compareNode",
@@ -228,7 +228,7 @@
         "typing_Tm_abs_1cc5188691c2486033982fdd092ae94c"
       ],
       0,
-      "cbabe869738e60f2f020f05d0745f327"
+      "938b8086345998e9aaab0804735efd1d"
     ],
     [
       "BDD.global_table'",
@@ -243,7 +243,7 @@
         "haseqTm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "7d57d75f231efb47159bcdad26ff6802"
+      "d32c52c169935cb496a9cabb7eaeac01"
     ],
     [
       "BDD.global_table'",
@@ -258,7 +258,7 @@
         "haseqTm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "bc427ca242744acc0e02cfbff5300a64"
+      "70f0f8d573c064206d18695d253a79f9"
     ],
     [
       "BDD.global_table'",
@@ -281,7 +281,7 @@
         "typing_BDD.compareNode"
       ],
       0,
-      "b13a325ff36effa20df44cfecd3e5c73"
+      "75d0d79e0d4ae34efc37663e715959f1"
     ],
     [
       "BDD.__proj__Mkglobal_table'__item__map",
@@ -296,7 +296,7 @@
         "haseqTm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "62201db22d0a7335d6b8037ea70ee148"
+      "aa3310a3daf779c56dc56f2897944b3a"
     ],
     [
       "BDD.__proj__Mkglobal_table'__item__map",
@@ -311,7 +311,7 @@
         "haseqTm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "b5dd2c2d0b077fc8a728d275c7fe67ba"
+      "60d114794b7238f8e53ba4f333596bf4"
     ],
     [
       "BDD.is_valid_table",
@@ -352,7 +352,7 @@
         "typing_tok_BDD.One@tok", "typing_tok_BDD.Zero@tok"
       ],
       0,
-      "50718a8c1f3b4ac686ce01e4ed54e579"
+      "75224c1beeb128c92a871821e262d851"
     ],
     [
       "BDD.measure",
@@ -368,7 +368,7 @@
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
       ],
       0,
-      "6b56a82b39f243875ad9fab3812446d3"
+      "3807da9ed4acb744edd51ad4a734ef7c"
     ],
     [
       "BDD.compatible_node",
@@ -401,7 +401,7 @@
         "token_correspondence_BDD.is_obdd.fuel_instrumented"
       ],
       0,
-      "65207d316e3352af3bbc584b76771021"
+      "1b35a48996ec4b6898656f5d5c4ff9cd"
     ],
     [
       "BDD.contain_lemma1",
@@ -474,7 +474,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "383cd852e409332971653afc1aea6877"
+      "0f674cecaddb452d4e08306f2cb071c6"
     ],
     [
       "BDD.contain_lemma2",
@@ -508,7 +508,7 @@
         "typing_MapAVL.find", "typing_MapAVL.mem", "typing_MapAVL.member_key"
       ],
       0,
-      "40d2d6251c739900ba3ff9f0af7a0af2"
+      "318bd35a2bdca05cd1f06f6d54d0c78e"
     ],
     [
       "BDD.makeNode",
@@ -617,7 +617,7 @@
         "typing_tok_BDD.One@tok", "typing_tok_BDD.Zero@tok"
       ],
       0,
-      "62f65ed9707ba61d0c0ecdae9a5e00ce"
+      "988e24daf8e3871cf60c05d9bf8400e9"
     ],
     [
       "BDD.notBDD",
@@ -634,7 +634,7 @@
         "refinement_interpretation_Tm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "366be3b9bb3ad9f31c76c5c22b511e22"
+      "7f2ff0d02d5250d724b0f670d3feaa5f"
     ],
     [
       "BDD.notBDD",
@@ -712,7 +712,7 @@
         "typing_tok_BDD.Zero@tok", "well-founded-ordering-on-nat"
       ],
       0,
-      "b877ade9e3875a5a0b6508796ad03b25"
+      "cf19e1c5fe292dfdc850876df3ee3a53"
     ],
     [
       "BDD.apply_map",
@@ -761,7 +761,7 @@
         "typing_tok_Compare.LT@tok"
       ],
       0,
-      "d9059a57004ca68980ee11af8a5ac5eb"
+      "49bff7b8cf3ba802a3be399112de03e2"
     ],
     [
       "BDD.is_valid_apply_map",
@@ -787,7 +787,7 @@
         "refinement_kinding_Tm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "b30c33a91866c5427e5ea3255d4876df"
+      "a7b97662eba0ead979b1dc07058fba38"
     ],
     [
       "BDD.from_bool",
@@ -805,7 +805,7 @@
         "typing_tok_BDD.One@tok", "typing_tok_BDD.Zero@tok"
       ],
       0,
-      "817bc3ac21c2fa721c1eb6754979cebb"
+      "e7494641022afc7415abdaeced00beb2"
     ],
     [
       "BDD.apply_with",
@@ -822,7 +822,7 @@
         "refinement_interpretation_Tm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "989103e25b0f26bc5cf2c66ea143a5d8"
+      "3b3bf5647f37926f53a1d73c3d914e75"
     ],
     [
       "BDD.apply_with",
@@ -957,7 +957,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "8b4fd6a522d5c57f90ae096f98591edb"
+      "3a550ab1a7fb44392972b4ee8e9fd713"
     ],
     [
       "BDD.apply",
@@ -1040,7 +1040,7 @@
         "typing_tok_BDD.Zero@tok"
       ],
       0,
-      "523c12aaccd3e6af7e7daa1d85babd8b"
+      "42c4cf42488a615017463f1fb41db06e"
     ],
     [
       "BDD.restrict_map",
@@ -1068,7 +1068,7 @@
         "typing_BDD.__proj__Mkbdd___item__tag", "typing_BDD.compareInt"
       ],
       0,
-      "42dae12b6df0762e6a9916230dc1e310"
+      "80fbcde1899619289dae85f208bf96d8"
     ],
     [
       "BDD.is_valid_restrict_map",
@@ -1104,7 +1104,7 @@
         "typing_BDD.__proj__Mkbdd___item__tag", "typing_BDD.compareInt"
       ],
       0,
-      "61420aa382471646a56384f84404e708"
+      "1897c1b78499133575fea65b791246e9"
     ],
     [
       "BDD.add_in_restrict_map_lemma",
@@ -1155,7 +1155,7 @@
         "typing_Tm_abs_ebdf2d37ddb83f43ce4857dbfff36383"
       ],
       0,
-      "5e1cddb6eb208cbd68e3c875677b3a79"
+      "591a9cb7acce5337e6c0540640fd5a1f"
     ],
     [
       "BDD.measure_lemma",
@@ -1183,7 +1183,7 @@
         "typing_tok_BDD.One@tok", "typing_tok_BDD.Zero@tok"
       ],
       0,
-      "452859c2bc1ca79126fd735d6e016f2a"
+      "1ed4e5dca682b0717beb0ff8ad14b5fe"
     ],
     [
       "BDD.measure_lemma",
@@ -1228,7 +1228,7 @@
         "typing_tok_BDD.One@tok", "typing_tok_BDD.Zero@tok"
       ],
       0,
-      "c6885e6d9b334733221390b3ff362675"
+      "f3113c1c2d2ab230b5925377ed1ba341"
     ],
     [
       "BDD.restrict_with",
@@ -1248,7 +1248,7 @@
         "refinement_interpretation_Tm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "4f6c83515d160b47df6160f1b14be09a"
+      "37f5f2de6cf5cea393e3e1aa65b42085"
     ],
     [
       "BDD.restrict_with",
@@ -1362,7 +1362,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "2cf29cf36b9d9046d6c0c9a2e68ffd5f"
+      "1454712bcffd5875285f79e32ac64734"
     ],
     [
       "BDD.restrict",
@@ -1426,7 +1426,7 @@
         "typing_Tm_abs_ebdf2d37ddb83f43ce4857dbfff36383"
       ],
       0,
-      "96f39a71493c6c7096c0a4ce87b7c8f8"
+      "05b6b301d6488ecad482aa5be90bb288"
     ],
     [
       "BDD.measure_lemma_with",
@@ -1440,7 +1440,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "10f38031d0af8097b112d8fc6d5edf51"
+      "a2fc7ece1594961af2c9d167d370ef3c"
     ],
     [
       "BDD.measure_lemma_with",
@@ -1486,38 +1486,34 @@
         "typing_tok_BDD.One@tok", "typing_tok_BDD.Zero@tok"
       ],
       0,
-      "df75f721424250a71ca0411cb56d5e2b"
+      "c4afc26683ec117bc57c27864a3d4bb8"
     ],
     [
-      "BDD.equivalence_lemma",
+      "BDD.simplify",
       1,
       2,
       1,
       [
         "@MaxIFuel_assumption", "@query", "assumption_BDD.bdd___uu___haseq",
         "assumption_BDD.node___uu___haseq", "equation_BDD.bdd",
-        "equation_BDD.node", "equation_Prims.eqtype", "equation_Prims.nat",
-        "function_token_typing_Prims.int",
+        "equation_BDD.node",
         "haseqTm_refine_2e4abc450dafbabfb4130166fb4fcc23",
-        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "haseqTm_refine_b16721560a00e6999bd64e6102b9d95d",
-        "refinement_interpretation_Tm_refine_352cb0b484e421c20e4d988945f2abc1",
-        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_20a0986417d89decf4674f4921f50192",
         "refinement_interpretation_Tm_refine_b16721560a00e6999bd64e6102b9d95d"
       ],
       0,
-      "786e594c07c383a0b985d973de213848"
+      "c82e46864c4a6b5549e67cf6fcb902c3"
     ],
     [
-      "BDD.equivalence_lemma",
+      "BDD.simplify",
       2,
       2,
       1,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_BDD.eval_node.fuel_instrumented",
         "@fuel_correspondence_BDD.is_obdd.fuel_instrumented",
-        "@fuel_irrelevance_BDD.eval_node.fuel_instrumented",
+        "@fuel_correspondence_BinTree.member.fuel_instrumented",
         "@fuel_irrelevance_BDD.is_obdd.fuel_instrumented", "@query",
         "BDD_pretyping_824fefcbe66487713298157a5d916d62",
         "BDD_pretyping_9e2d8fb1d7960a8f1fd1396360a7f003",
@@ -1529,40 +1525,41 @@
         "binder_x_277f436d2e16bd3e60d65b86bf1aefb2_2",
         "binder_x_c6b56f5e12e2c36b55c4dbc20fba9d65_0", "bool_inversion",
         "constructor_distinct_BDD.Node", "constructor_distinct_BDD.One",
-        "constructor_distinct_BDD.Zero", "constructor_distinct_BoxBool",
-        "constructor_distinct_Tm_unit", "data_elim_BDD.Mkbdd_",
+        "constructor_distinct_BDD.Zero", "data_elim_BDD.Mkbdd_",
         "data_elim_BDD.Node", "data_elim_FStar.Pervasives.Native.Some",
-        "data_typing_intro_BDD.Zero@tok", "disc_equation_BDD.One",
-        "disc_equation_BDD.Zero", "disc_equation_Compare.EQ", "eq2-interp",
-        "equality_tok_BDD.One@tok", "equality_tok_BDD.Zero@tok",
-        "equation_BDD.bdd", "equation_BDD.get_high", "equation_BDD.get_low",
-        "equation_BDD.get_var", "equation_BDD.global_table",
-        "equation_BDD.is_leaf", "equation_BDD.is_valid_table",
+        "data_typing_intro_BDD.Mkbdd_@tok", "data_typing_intro_BDD.Zero@tok",
+        "data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok",
+        "disc_equation_BDD.Node", "disc_equation_BDD.One",
+        "disc_equation_BDD.Zero", "disc_equation_Compare.EQ",
+        "disc_equation_Compare.GT", "eq2-interp", "equality_tok_BDD.One@tok",
+        "equality_tok_BDD.Zero@tok", "equation_BDD.bdd",
+        "equation_BDD.compareNode", "equation_BDD.get_high",
+        "equation_BDD.get_low", "equation_BDD.get_var",
+        "equation_BDD.global_table", "equation_BDD.is_leaf",
+        "equation_BDD.is_valid_table", "equation_BDD.max",
         "equation_BDD.measure", "equation_BDD.node",
         "equation_Compare.comparaison", "equation_Compare.reflexivity",
         "equation_MapAVL.map", "equation_MapAVL.member",
         "equation_Prims.eqtype", "equation_Prims.nat",
-        "equation_with_fuel_BDD.eval_node.fuel_instrumented",
         "equation_with_fuel_BDD.is_obdd.fuel_instrumented",
-        "fuel_guarded_inversion_BDD.bdd_",
+        "equation_with_fuel_BinTree.member.fuel_instrumented",
+        "false_interp", "fuel_guarded_inversion_BDD.bdd_",
         "fuel_guarded_inversion_BDD.global_table_",
         "fuel_guarded_inversion_BDD.node_",
+        "fuel_guarded_inversion_BinTree.set",
         "fuel_guarded_inversion_FStar.Pervasives.Native.option",
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
         "function_token_typing_Prims.__cache_version_number__",
-        "function_token_typing_Prims.int",
         "haseqTm_refine_2e4abc450dafbabfb4130166fb4fcc23",
-        "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "haseqTm_refine_b16721560a00e6999bd64e6102b9d95d", "int_inversion",
-        "int_typing",
-        "interpretation_Tm_abs_b9723a142340d135711a89e004207cf9",
+        "haseqTm_refine_b16721560a00e6999bd64e6102b9d95d", "int_typing",
         "l_and-interp", "l_not-interp", "primitive_Prims.op_Addition",
         "primitive_Prims.op_BarBar", "primitive_Prims.op_Equality",
-        "primitive_Prims.op_LessThan", "primitive_Prims.op_disEquality",
+        "primitive_Prims.op_GreaterThan", "primitive_Prims.op_LessThan",
         "proj_equation_BDD.Mkbdd__node", "proj_equation_BDD.Mkbdd__tag",
         "proj_equation_BDD.Mkglobal_table__map",
         "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
         "proj_equation_FStar.Pervasives.Native.Mktuple2__2",
+        "projection_inverse_BDD.Mkbdd__node",
         "projection_inverse_BDD.Mkbdd__tag",
         "projection_inverse_BDD.Node__0", "projection_inverse_BDD.Node__1",
         "projection_inverse_BDD.Node__2",
@@ -1571,25 +1568,29 @@
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
         "refinement_interpretation_Tm_refine_178bc9a8c11267c91d1792491230ad1b",
+        "refinement_interpretation_Tm_refine_1a5e7e89cb3926b0aefa73aec2a4b05e",
         "refinement_interpretation_Tm_refine_2e4abc450dafbabfb4130166fb4fcc23",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_5f6fb9aa49157f71008a9bed3be3cba5",
+        "refinement_interpretation_Tm_refine_6a44c86c087c727bb7b951b16bc585dd",
         "refinement_interpretation_Tm_refine_6ba535d7a1284a994db1e4012f83059c",
         "refinement_interpretation_Tm_refine_713b4e3e6b6d19e752255dafb694f63a",
-        "refinement_interpretation_Tm_refine_963798a4e463f3df3c648ebbdda5eb63",
         "refinement_interpretation_Tm_refine_b16721560a00e6999bd64e6102b9d95d",
         "refinement_interpretation_Tm_refine_c475c19fc9f9b6268c22db3ab308a1bc",
         "refinement_kinding_Tm_refine_2e4abc450dafbabfb4130166fb4fcc23",
         "refinement_kinding_Tm_refine_b16721560a00e6999bd64e6102b9d95d",
-        "typing_AVL.find", "typing_BDD.__proj__Mkbdd___item__node",
+        "true_interp", "typing_AVL.find",
+        "typing_BDD.__proj__Mkbdd___item__node",
         "typing_BDD.__proj__Mkglobal_table___item__map",
-        "typing_BDD.compareNode", "typing_BDD.is_leaf", "typing_BDD.measure",
-        "typing_Compare.uu___is_EQ", "typing_MapAVL.member",
-        "typing_tok_BDD.One@tok", "typing_tok_BDD.Zero@tok",
+        "typing_BDD.compareNode", "typing_BDD.get_var", "typing_BDD.is_leaf",
+        "typing_BDD.measure", "typing_BDD.simplify",
+        "typing_Compare.uu___is_EQ", "typing_Compare.uu___is_GT",
+        "typing_MapAVL.member", "typing_tok_BDD.Zero@tok",
         "well-founded-ordering-on-nat"
       ],
       0,
-      "389f16f348fc159b57d90e9abb0f0663"
+      "d008dbba2f75eee4ebf2977693174874"
     ]
   ]
 ]

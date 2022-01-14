@@ -323,26 +323,48 @@ let (restrict :
           let uu___ = restrict_with table n b BinTree.Leaf input in
           match uu___ with | (bdd'1, table', uu___1) -> (bdd'1, table')
 
-let rec (equivalence_lemma :
-  global_table -> bdd -> bdd -> Prims.nat -> Prims.bool) =
+let rec (simplify : global_table -> bdd -> bdd -> (bdd * global_table)) =
   fun table ->
     fun b1 ->
       fun b2 ->
         match ((b1.node), (b2.node)) with
-        | (Zero, One) -> (fun i -> true)
-        | (One, Zero) -> (fun i -> true)
-        | (Zero, Zero) -> (fun i -> true)
-        | (One, One) -> (fun i -> true)
-        | (Zero, Node (l, v, h)) ->
-            if l.tag <> b1.tag
+        | (Zero, uu___) -> (b1, table)
+        | (One, uu___) -> (b1, table)
+        | (uu___, One) -> (b1, table)
+        | (Node (l1, v1, h1), Node (l2, v2, h2)) ->
+            if v1 > v2
             then
-              let f i = equivalence_lemma table b1 l i in
-              let g i = if i = v then false else f i in Prims.admit ()
-            else Prims.admit ()
-        | (One, Node (l, v, h)) ->
-            if l.tag <> b1.tag
-            then
-              let f i = equivalence_lemma table b1 l i in
-              let g i = if i = v then false else f i in Prims.admit ()
-            else Prims.admit ()
-        | (uu___, uu___1) -> Prims.admit ()
+              let uu___ = simplify table l1 b2 in
+              (match uu___ with
+               | (l, table1) ->
+                   let uu___1 = simplify table1 h1 b2 in
+                   (match uu___1 with
+                    | (h, table2) -> makeNode table2 (Node (l, v1, h))))
+            else
+              if v2 > v1
+              then
+                (if l2.node = Zero
+                 then simplify table b1 h2
+                 else
+                   if h2.node = Zero
+                   then simplify table b1 l2
+                   else
+                     (let uu___3 = simplify table b1 h2 in
+                      match uu___3 with
+                      | (h, table1) ->
+                          let uu___4 = simplify table1 b1 l2 in
+                          (match uu___4 with
+                           | (l, table2) -> makeNode table2 (Node (l, v2, h)))))
+              else
+                if l2.node = Zero
+                then simplify table h1 h2
+                else
+                  if h2.node = Zero
+                  then simplify table l1 l2
+                  else
+                    (let uu___4 = simplify table h1 h2 in
+                     match uu___4 with
+                     | (h, table1) ->
+                         let uu___5 = simplify table1 l1 l2 in
+                         (match uu___5 with
+                          | (l, table2) -> makeNode table2 (Node (l, v2, h))))
