@@ -95,7 +95,7 @@ let is_valid_table (table:global_table') : prop =
 
         (* unicity of tag *)
         (forall n b. M.member n b table.map ==> (
-            bdd.tag == b.tag ==> bdd == b
+            bdd.tag == b.tag <==> bdd.node == b.node
         )) /\
 
         (* recursivity property *)
