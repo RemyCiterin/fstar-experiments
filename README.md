@@ -4,4 +4,6 @@ several experiments on F * for the generation of (almost) automatic proofs
 ## todo : 
 1. AVL tree (done)
 2. Set and Map module (done)
-3. Binary Decision Diagram (typed in this case for more efficient memoization) : apply (done) + restrict (done) + simplify + the eval_node equivalence
+3. Binary Decision Diagram: apply (done) + restrict (done) + simplify + the eval_node equivalence
+
+the final version is in BDD.fst, BDD2.fst is an incomplete attempt of typed BDD, difficult because several typed BDD can represent the same function
